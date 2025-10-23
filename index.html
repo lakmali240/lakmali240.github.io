@@ -1,315 +1,361 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-theme="dark">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Lakmali Nadeesha | Research Scientist (CV/ML)</title>
-  <meta name="description" content="PhD researcher in Computer Vision & Medical Imaging. Active Learning, Foundation Models, Generative Modeling. University of Kentucky." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="description" content="Lakmali Nadeesha — PhD researcher in Computer Vision & Medical Imaging. Active Learning, Foundation Models, Generative Modeling." />
+  <meta name="keywords" content="Lakmali Nadeesha, portfolio, research, active learning, medical imaging, diffusion, segmentation, GitHub Pages" />
   <meta name="author" content="Lakmali Nadeesha" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0b1020" />
   <meta property="og:title" content="Lakmali Nadeesha | Research Scientist (CV/ML)" />
-  <meta property="og:description" content="Portfolio: publications, projects, videos, and media gallery." />
+  <meta property="og:description" content="Media-rich academic portfolio: publications, projects, videos, and gallery." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og-card.png" />
   <meta property="og:url" content="https://YOUR-USERNAME.github.io" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='60'>LN</text></svg>">
+
+  <!-- CSS libs (CDN) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#070a12;--bg2:#0c1326;--card:#0f172a;--text:#e6eaf2;--muted:#97a1b6;--ring:#5b8cff;--link:#94b5ff;--accent:#7aa2ff;--grad:radial-gradient(1200px 600px at 90% -10%, rgba(124,164,255,.15), transparent 60%);
-    }
-    @media(prefers-color-scheme:light){:root{--bg:#ffffff;--bg2:#f5f7fb;--card:#ffffff;--text:#0f172a;--muted:#475569;--ring:#2563eb;--link:#1d4ed8;--accent:#3b82f6;--grad:none}}
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;color:var(--text);background:var(--grad),linear-gradient(180deg,var(--bg),var(--bg2));}
-    a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;backdrop-filter:blur(10px);background:color-mix(in oklab, var(--bg) 88%, transparent);border-bottom:1px solid color-mix(in oklab, var(--text) 10%, transparent);z-index:20}
-    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
-    .brand{font-weight:800;letter-spacing:.4px}
-    .nav a{font-weight:600}
-    .nav .right a{padding:8px 10px;border-radius:10px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid color-mix(in oklab, var(--text) 15%, transparent);background:linear-gradient(180deg,color-mix(in oklab, var(--card) 95%, transparent),color-mix(in oklab, var(--card) 100%, transparent));box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 10px 30px rgba(2,6,23,.25)}
-    .btn:hover{border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 40%, transparent);text-decoration:none}
-    .hero{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;padding:36px 0 12px}
-    .avatar{width:200px;height:200px;border-radius:28px;object-fit:cover;border:2px solid color-mix(in oklab, var(--text) 10%, transparent)}
-    h1{font-size:clamp(28px,3vw,40px);margin:0 0 8px}
-    h2{font-size:clamp(22px,2.3vw,30px);margin:30px 0 12px}
-    p{line-height:1.7;color:var(--muted)}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:color-mix(in oklab, var(--accent) 18%, var(--card));border:1px solid color-mix(in oklab, var(--accent) 50%, transparent);color:color-mix(in oklab, var(--accent) 90%, white)}
-    section{padding:24px 0;border-top:1px dashed color-mix(in oklab, var(--text) 10%, transparent)}
+    :root{--bg:#070a12;--bg2:#0c1326;--card:#0f172a;--text:#e6eaf2;--muted:#a0a8bb;--ring:#6ea8fe;--brand:#7aa2ff;--link:#9bc0ff}
+    [data-theme="light"]{--bg:#ffffff;--bg2:#f5f7fb;--card:#ffffff;--text:#0f172a;--muted:#4b5563;--ring:#2563eb;--brand:#3b82f6;--link:#1d4ed8}
+    html,body{background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+    a{color:var(--link)} a:hover{text-decoration:underline}
+    /* Navbar */
+    .navbar{backdrop-filter:blur(10px);background-color:rgba(10,14,25,.6) !important;border-bottom:1px solid rgba(255,255,255,.06)}
+    .navbar-brand{font-weight:800;letter-spacing:.3px}
+    .btn-soft{border:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.04));color:var(--text)}
+    .btn-soft:hover{border-color:var(--ring);box-shadow:0 0 0 3px rgba(110,168,254,.35)}
 
-    /* Featured strip */
-    .strip{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-    .card{grid-column:span 12;background:linear-gradient(180deg,color-mix(in oklab, var(--card) 96%, transparent),color-mix(in oklab, var(--card) 100%, transparent));border:1px solid color-mix(in oklab, var(--text) 12%, transparent);padding:16px;border-radius:16px}
-    @media(min-width:950px){.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}}
-    .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--muted)}
+    /* Hero Swiper */
+    .hero{position:relative}
+    .hero .swiper{width:100%;height:100vh}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.65))}
+    .hero .caption{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);text-align:center;max-width:1100px;padding:0 16px}
+    .hero h1{font-size:clamp(28px,3.8vw,56px);margin-bottom:8px}
+    .hero p{color:#e5e7eb;font-size:clamp(16px,1.4vw,20px)}
+    .badge-pill{border-radius:999px;padding:.4rem .7rem;border:1px solid rgba(255,255,255,.2);font-size:.85rem;margin:.15rem}
 
-    /* Media gallery */
-    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    .tile{position:relative;grid-column:span 12;border-radius:14px;overflow:hidden;border:1px solid color-mix(in oklab, var(--text) 12%, transparent);cursor:pointer}
-    .tile img,.tile video{width:100%;height:100%;object-fit:cover;display:block}
-    @media(min-width:900px){.tile.span-3{grid-column:span 3}.tile.span-4{grid-column:span 4}.tile.span-5{grid-column:span 5}.tile.span-6{grid-column:span 6}}
-    .tile .cap{position:absolute;inset:auto 0 0 0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.65));color:#fff;font-size:12px}
-
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
-    .modal.open{display:flex}
-    .modal .inner{max-width:1000px;width:100%;background:var(--card);border:1px solid color-mix(in oklab, var(--text) 12%, transparent);border-radius:16px;overflow:hidden}
-    .modal header{position:relative;backdrop-filter:none;background:var(--card);border-bottom:1px solid color-mix(in oklab, var(--text) 12%, transparent)}
-    .modal .content{padding:0;background:#000}
-    .close{position:absolute;right:10px;top:10px;background:transparent;border:1px solid color-mix(in oklab, var(--text) 20%, transparent);color:var(--text);border-radius:10px;padding:6px 10px;cursor:pointer}
+    /* Sections */
+    section{padding:70px 0;border-top:1px dashed rgba(255,255,255,.08)}
+    .section-title{margin-bottom:24px}
+    .card-bg{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.08);border-radius:16px}
 
     /* Publications */
-    .pub{display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:start;margin:14px 0;padding:12px;border:1px solid color-mix(in oklab, var(--text) 10%, transparent);border-radius:12px;background:color-mix(in oklab, var(--card) 96%, transparent)}
-    .pub-title{font-weight:700;color:var(--text)}
-    .pub-meta{font-size:13px;color:var(--muted)}
-    .pub a{margin-right:10px}
+    .pub{padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03)}
+    .pub .meta{color:var(--muted);font-size:.95rem}
+    .pub .links a{margin-right:10px}
+
+    /* Gallery */
+    .glightbox-clean .gslide-title{color:#111}
 
     /* Timeline */
-    .timeline{border-left:2px solid color-mix(in oklab, var(--text) 12%, transparent);padding-left:14px}
+    .timeline{border-left:2px solid rgba(255,255,255,.1);padding-left:14px}
     .dot{width:9px;height:9px;border-radius:999px;background:var(--ring);display:inline-block;margin-right:8px}
 
-    footer{padding:40px 0 60px;color:var(--muted);text-align:center}
-    .pill{padding:3px 8px;border-radius:999px;border:1px solid color-mix(in oklab, var(--text) 15%, transparent);font-size:12px;color:var(--muted)}
+    /* Footer */
+    footer{padding:50px 0;color:var(--muted)}
   </style>
-
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Lakmali Nadeesha","jobTitle":"PhD Researcher (Computer Vision)","affiliation":{"@type":"CollegeOrUniversity","name":"University of Kentucky"},"url":"https://YOUR-USERNAME.github.io","email":"mailto:lakmali.nadeesha@uky.edu","sameAs":["https://scholar.google.com/","https://github.com/YOUR-USERNAME","https://www.linkedin.com/in/YOUR-LINKEDIN","https://youtube.com/@LuckyNadee"]}
-  </script>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <a href="#" class="brand">LN</a>
-      <nav class="right" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#featured">Featured</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-        <a href="#media">Media</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" class="btn" style="padding:6px 10px">☀︎/☾</button>
-      </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">LN</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbars">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#featured">Featured</a></li>
+          <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#media">Media</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <a class="btn btn-soft" href="/assets/Lakmali_Nadeesha_CV.pdf" target="_blank">📄 CV</a>
+          <button class="btn btn-soft" id="themeToggle">☀︎/☾</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero: full-screen slider -->
+  <header class="hero">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="/assets/hero/hero1.jpg" class="w-100 h-100 object-fit-cover" alt="WSI montage" />
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/hero/hero2.jpg" class="w-100 h-100 object-fit-cover" alt="Segmentation overlays" />
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/hero/hero3.jpg" class="w-100 h-100 object-fit-cover" alt="Conference photo" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="caption">
+      <h1 class="animate__animated animate__fadeInUp">Lakmali Nadeesha</h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">PhD Researcher • Computer Vision & Medical Imaging • Active Learning • Foundation Models • Generative Modeling</p>
+      <div class="mt-3">
+        <span class="badge-pill">Active Learning</span>
+        <span class="badge-pill">Pathology WSI</span>
+        <span class="badge-pill">Diffusion</span>
+        <span class="badge-pill">SAM‑Path / UNI</span>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero -->
-    <section class="hero" id="about">
-      <img class="avatar" src="/assets/portrait.jpg" alt="Portrait of Lakmali Nadeesha" />
-      <div>
-        <h1> Lakmali Nadeesha <span class="pill">she/her</span></h1>
-        <p style="margin: 0 0 6px">PhD Researcher in <b>Computer Vision</b> & <b>Medical Imaging</b> @ University of Kentucky.</p>
-        <p>I design <b>data-efficient learning</b> for medical image segmentation—<em>Active Learning</em>, <em>Foundation Models</em> (SAM‑Path, UNI) and <em>Generative Modeling</em> for pathology WSIs and dermoscopy. Recent work: <b>TAIAL</b> (task‑aligned iterative active learning) and <b>Adaptive GMM</b> for early‑stage sample selection.</p>
-        <div class="badges">
-          <span class="badge">Active Learning</span>
-          <span class="badge">Foundation Models</span>
-          <span class="badge">Pathology WSI</span>
-          <span class="badge">Diffusion Models</span>
-          <span class="badge">Generative AL</span>
-        </div>
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap: wrap;">
-          <a class="btn" href="/assets/Lakmali_Nadeesha_CV.pdf">📄 Download CV</a>
-          <a class="btn" href="#contact">✉️ Contact</a>
-          <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener">🎓 Google Scholar</a>
-          <a class="btn" href="#reels">▶︎ 60s Reels</a>
+  <main>
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="/assets/portrait.jpg" alt="Portrait" class="img-fluid rounded-4 border" />
+          </div>
+          <div class="col-lg-8" data-aos="fade-left">
+            <h2 class="section-title">About</h2>
+            <p class="lead">I design <strong>data‑efficient learning</strong> for medical image segmentation—combining <em>Active Learning</em>, <em>Foundation Models</em> (SAM‑Path, UNI), and <em>Generative Modeling</em> for pathology WSIs and dermoscopy.</p>
+            <p>Recent: <strong>TAIAL</strong> (Task‑Aligned Iterative Active Learning) with <strong>Adaptive GMM</strong> to solve cold‑start and improve early‑stage sample selection; 2× Amazon Applied Scientist internships (multi‑modal theme ID and demographic‑aware virtual try‑on with automated quality evaluation + refiner).</p>
+            <div class="d-flex gap-2 flex-wrap mt-3">
+              <a class="btn btn-soft" href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a>
+              <a class="btn btn-soft" href="https://github.com/YOUR-USERNAME" target="_blank">💻 GitHub</a>
+              <a class="btn btn-soft" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">🔗 LinkedIn</a>
+              <a class="btn btn-soft" href="#contact">✉️ Contact</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Featured: quick visual overview -->
+    <!-- Featured -->
     <section id="featured">
-      <h2>Featured</h2>
-      <div class="strip">
-        <div class="card span-6">
-          <div class="kicker">Conference</div>
-          <h3 style="margin:6px 0">ICIP 2025 — TAIAL / Adaptive GMM for Skin Lesion Segmentation</h3>
-          <p class="muted">Lakmali Nadeesha Kumari, Chanaka T. Bandara, Chen‑Nee Chuah, Sen‑Ching S. Cheung. Pages 2247–2252, IEEE (Sep 14, 2025).</p>
-          <p><a class="btn" href="#">PDF</a> <a class="btn" href="#">Slides</a> <a class="btn" href="#">Poster</a> <a class="btn" href="#">BibTeX</a></p>
-        </div>
-        <div class="card span-6">
-          <div class="kicker">Industry</div>
-          <h3 style="margin:6px 0">Amazon Applied Scientist Internships</h3>
-          <ul>
-            <li><b>Theme Recognition</b>: Active learning for multi‑modal, multi‑class classification.</li>
-            <li><b>Virtual Try‑On</b>: Demographic‑aware automatic model selection + garment‑refiner + automated quality evaluation.</li>
-          </ul>
+      <div class="container">
+        <h2 class="section-title mb-4" data-aos="fade-up">Featured</h2>
+        <div class="row g-3">
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="p-4 card-bg h-100">
+              <div class="text-uppercase small text-muted">Conference</div>
+              <h3 class="h4 mt-1">ICIP 2025 — TAIAL / Adaptive GMM for Skin Lesion Segmentation</h3>
+              <p class="mb-2">Lakmali Nadeesha Kumari, Chanaka T. Bandara, Chen‑Nee Chuah, Sen‑Ching S. Cheung. <span class="text-muted">pp. 2247–2252, IEEE — Sep 14, 2025</span></p>
+              <div class="d-flex gap-2 flex-wrap">
+                <a class="btn btn-soft" href="#">PDF</a>
+                <a class="btn btn-soft" href="#">arXiv</a>
+                <a class="btn btn-soft" href="#">Slides</a>
+                <a class="btn btn-soft" href="#">Poster</a>
+                <button class="btn btn-soft" onclick="copyBib('bib-taial', this)">Copy BibTeX</button>
+              </div>
+              <template id="bib-taial">@inproceedings{Kumari2025TAIAL, title={A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation}, author={Kumari, Lakmali Nadeesha and Bandara, Chanaka Thushitha and Chuah, Chen-Nee and Cheung, Sen-Ching Samson}, booktitle={Proc. ICIP}, pages={2247--2252}, year={2025}, publisher={IEEE}}</template>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-4 card-bg h-100">
+              <div class="text-uppercase small text-muted">Industry</div>
+              <h3 class="h4 mt-1">Amazon Applied Scientist Internships</h3>
+              <ul class="mb-2">
+                <li><strong>Theme Recognition</strong>: Active learning for multi‑modal, multi‑class classification.</li>
+                <li><strong>Virtual Try‑On</strong>: Demographic‑aware model selection + garment refiner + automated quality evaluation.</li>
+              </ul>
+              <div class="ratio ratio-16x9 rounded-3 overflow-hidden border">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="Industry reel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Publications -->
     <section id="publications">
-      <h2>Publications</h2>
-      <article class="pub">
-        <div>
-          <div class="pub-title">A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</div>
-          <div class="pub-meta">2025 IEEE International Conference on Image Processing (ICIP), pp. 2247–2252. Authors: Lakmali Nadeesha Kumari, Chanaka T. Bandara, Chen‑Nee Chuah, Sen‑Ching S. Cheung. Published: Sep 14, 2025. Publisher: IEEE.</div>
-          <div class="pub-meta">Description: TAIAL couples self‑supervised initialization with clustering + entropy ranking on a progressively refined feature space to balance diversity, informativeness, and uncertainty for early‑stage active selection on ISIC17.</div>
-          <p><a href="#">PDF</a><a href="#">arXiv</a><a href="#">Slides</a><a href="#">Poster</a><a href="#" onclick="copyBib(event, this)">Copy BibTeX</a></p>
-          <template id="bib-taial">@inproceedings{Kumari2025TAIAL, title={A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation}, author={Kumari, Lakmali Nadeesha and Bandara, Chanaka Thushitha and Chuah, Chen-Nee and Cheung, Sen-Ching Samson}, booktitle={Proc. ICIP}, pages={2247--2252}, year={2025}, publisher={IEEE}}</template>
-        </div>
-        <div><span class="pill">ICIP 2025</span></div>
-      </article>
-
-      <!-- Add more pubs as needed -->
-    </section>
-
-    <!-- Projects (cards with visuals + video) -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="strip">
-        <div class="card span-8">
-          <div class="kicker">Generative AL</div>
-          <h3 style="margin:6px 0">Mask‑Conditioned Diffusion @ 1024×1024</h3>
-          <p>Realistic pathology patch synthesis conditioned on masks; evaluates domain fidelity and downstream sample efficiency. Includes automated quality metrics and ablations.</p>
-          <div class="gallery">
-            <div class="tile span-6" data-type="img" data-src="/assets/media/diffusion_1.jpg"><img src="/assets/media/diffusion_1.jpg" alt="Diffusion sample 1"><div class="cap">Generated patch #1</div></div>
-            <div class="tile span-6" data-type="img" data-src="/assets/media/diffusion_2.jpg"><img src="/assets/media/diffusion_2.jpg" alt="Diffusion sample 2"><div class="cap">Generated patch #2</div></div>
-            <div class="tile span-12" data-type="video" data-src="https://www.youtube.com/embed/VIDEO_ID1"><img src="/assets/media/video_cover_1.jpg" alt="Video cover"><div class="cap">1‑min overview</div></div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Selected Publications</h2>
+        <div class="row g-3">
+          <div class="col-12" data-aos="fade-up">
+            <div class="pub">
+              <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div>
+                  <div class="h5 mb-1">A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</div>
+                  <div class="meta">ICIP 2025 — Lakmali N. Kumari, C. T. Bandara, C.-N. Chuah, S.-C. S. Cheung — pp. 2247–2252</div>
+                </div>
+                <span class="badge rounded-pill text-bg-primary">ICIP 2025</span>
+              </div>
+              <p class="mb-2 mt-2">TAIAL couples self‑supervised initialization with clustering + entropy ranking on a progressively refined feature space, balancing diversity, informativeness, and uncertainty for early‑stage selection (ISIC17).</p>
+              <div class="links">
+                <a href="#" class="btn btn-sm btn-soft">PDF</a>
+                <a href="#" class="btn btn-sm btn-soft">arXiv</a>
+                <a href="#" class="btn btn-sm btn-soft">Slides</a>
+                <a href="#" class="btn btn-sm btn-soft">Poster</a>
+                <button class="btn btn-sm btn-soft" onclick="copyBib('bib-taial', this)">Copy BibTeX</button>
+              </div>
+            </div>
           </div>
-          <p class="pub-meta"><a href="#">Code</a> · <a href="#">Demo</a> · <a href="#">Blog</a></p>
-        </div>
-        <div class="card span-4">
-          <div class="kicker">Virtual Try‑On</div>
-          <h3 style="margin:6px 0">Demographic‑Aware Auto Model Selection</h3>
-          <p>End‑to‑end pipeline: on‑model generation, demographic‑aware selector, refiner for garment fidelity, and fully automated quality evaluation.</p>
-          <div class="gallery">
-            <div class="tile span-12" data-type="img" data-src="/assets/media/vton_grid.jpg"><img src="/assets/media/vton_grid.jpg" alt="VTON grid"><div class="cap">On‑model generations</div></div>
-          </div>
-          <p class="pub-meta"><a href="#">Tech report</a> · <a href="#">Slides</a></p>
-        </div>
-        <div class="card span-4">
-          <div class="kicker">Multi‑Modal Theme ID</div>
-          <h3 style="margin:6px 0">Active Learning for Theme Recognition</h3>
-          <p>Multi‑modal, multi‑class framework with pool‑based querying and uncertainty‑aware labeling to accelerate coverage and reduce costs.</p>
-          <p class="pub-meta"><a href="#">Overview</a> · <a href="#">Poster</a></p>
-        </div>
-        <div class="card span-8">
-          <div class="kicker">Pathology WSI</div>
-          <h3 style="margin:6px 0">SAM‑Path + UNI for Brain Tissue</h3>
-          <p>Patch‑level segmentation of brain H&E WSIs with multi‑scale context and promptable encoders; replacing HIPT with UNI for stronger representation.</p>
-          <div class="gallery">
-            <div class="tile span-6" data-type="img" data-src="/assets/media/sam_uni_1.jpg"><img src="/assets/media/sam_uni_1.jpg" alt="Segmentation vis 1"><div class="cap">Segmentation overlay</div></div>
-            <div class="tile span-6" data-type="img" data-src="/assets/media/sam_uni_2.jpg"><img src="/assets/media/sam_uni_2.jpg" alt="Segmentation vis 2"><div class="cap">Prompt variation</div></div>
-          </div>
-          <p class="pub-meta"><a href="#">Code</a> · <a href="#">Report</a></p>
+          <!-- Add more .pub blocks as needed -->
         </div>
       </div>
     </section>
 
-    <!-- Media gallery (images + videos with modal) -->
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Projects</h2>
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" data-aos="fade-up">
+          <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#p1" type="button" role="tab">Generative AL</button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p2" type="button" role="tab">Virtual Try‑On</button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p3" type="button" role="tab">Theme Recognition</button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p4" type="button" role="tab">SAM‑Path + UNI</button></li>
+        </ul>
+        <div class="tab-content" data-aos="fade-up">
+          <div class="tab-pane fade show active" id="p1" role="tabpanel">
+            <div class="row g-3 align-items-stretch">
+              <div class="col-lg-8">
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden border"><iframe src="https://www.youtube.com/embed/VIDEO_ID1?rel=0" title="Generative AL explainer" allowfullscreen></iframe></div>
+              </div>
+              <div class="col-lg-4">
+                <div class="p-3 card-bg h-100">
+                  <h3 class="h5">Mask‑Conditioned Diffusion @ 1024×1024</h3>
+                  <p>Realistic pathology patch synthesis conditioned on masks; evaluates domain fidelity and sample efficiency; automated quality metrics and ablations.</p>
+                  <div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Code</a><a class="btn btn-soft" href="#">Blog</a><a class="btn btn-soft" href="#">Dataset</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="p2" role="tabpanel">
+            <div class="row g-3">
+              <div class="col-lg-6"><a href="/assets/media/vton_grid.jpg" class="glightbox" data-gallery="vton"><img src="/assets/media/vton_grid.jpg" class="img-fluid rounded-4 border" alt="VTON grid"/></a></div>
+              <div class="col-lg-6">
+                <div class="p-3 card-bg h-100">
+                  <h3 class="h5">Demographic‑Aware Auto Model Selection</h3>
+                  <p>End‑to‑end pipeline: on‑model generation, selector, refiner for garment fidelity, and automated quality evaluation.</p>
+                  <div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Tech report</a><a class="btn btn-soft" href="#">Slides</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="p3" role="tabpanel">
+            <div class="row g-3">
+              <div class="col-lg-7"><img src="/assets/media/theme_id.jpg" class="img-fluid rounded-4 border" alt="Theme ID"/></div>
+              <div class="col-lg-5">
+                <div class="p-3 card-bg h-100"><h3 class="h5">Active Learning for Multi‑Modal, Multi‑Class Theme Recognition</h3><p>Pool‑based querying and uncertainty‑aware labeling to accelerate coverage and reduce costs in large catalogs.</p><div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Overview</a><a class="btn btn-soft" href="#">Poster</a></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="p4" role="tabpanel">
+            <div class="row g-3">
+              <div class="col-lg-6"><a href="/assets/media/sam_uni_1.jpg" class="glightbox" data-gallery="samuni"><img src="/assets/media/sam_uni_1.jpg" class="img-fluid rounded-4 border" alt="Seg overlay"/></a></div>
+              <div class="col-lg-6"><a href="/assets/media/sam_uni_2.jpg" class="glightbox" data-gallery="samuni"><img src="/assets/media/sam_uni_2.jpg" class="img-fluid rounded-4 border" alt="Prompt var"/></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Media Gallery -->
     <section id="media">
-      <h2>Media</h2>
-      <div class="gallery">
-        <div class="tile span-4" data-type="img" data-src="/assets/media/poster_icip.jpg"><img src="/assets/media/poster_icip.jpg" alt="ICIP poster"><div class="cap">ICIP 2025 Poster</div></div>
-        <div class="tile span-4" data-type="img" data-src="/assets/media/award.jpg"><img src="/assets/media/award.jpg" alt="Award"><div class="cap">Travel Grant</div></div>
-        <div class="tile span-4" data-type="video" data-src="https://www.youtube.com/embed/VIDEO_ID2"><img src="/assets/media/video_cover_2.jpg" alt="YouTube cover"><div class="cap">Talk snippet</div></div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Media</h2>
+        <div class="row g-3" data-aos="fade-up">
+          <div class="col-6 col-lg-3"><a href="/assets/media/poster_icip.jpg" class="glightbox" data-gallery="media" data-title="ICIP 2025 Poster"><img src="/assets/media/poster_icip.jpg" class="img-fluid rounded-4 border" alt="ICIP poster"/></a></div>
+          <div class="col-6 col-lg-3"><a href="/assets/media/award.jpg" class="glightbox" data-gallery="media" data-title="Travel Grant"><img src="/assets/media/award.jpg" class="img-fluid rounded-4 border" alt="award"/></a></div>
+          <div class="col-12 col-lg-6"><a href="https://www.youtube.com/watch?v=VIDEO_ID2" class="glightbox"><img src="/assets/media/video_cover_2.jpg" class="img-fluid rounded-4 border" alt="talk"/></a></div>
+        </div>
       </div>
     </section>
 
     <!-- News Timeline -->
     <section id="news">
-      <h2>News</h2>
-      <div class="timeline">
-        <p><span class="dot"></span><b>Oct 2025</b> — Presented at ICIP 2025 (Alaska); slides & poster available.</p>
-        <p><span class="dot"></span><b>Sep 2025</b> — Generative AL prototype achieves SoTA on internal dataset with 3% labels.</p>
-        <p><span class="dot"></span><b>Aug 2025</b> — Accepted return offer as Applied Scientist Intern (Amazon) for Summer 2026.</p>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">News</h2>
+        <div class="timeline" data-aos="fade-up">
+          <p><span class="dot"></span><strong>Oct 2025</strong> — Presented at ICIP 2025 (Alaska); slides & poster available.</p>
+          <p><span class="dot"></span><strong>Sep 2025</strong> — Generative AL prototype achieves SoTA on internal dataset with 3% labels.</p>
+          <p><span class="dot"></span><strong>Aug 2025</strong> — Accepted return offer as Applied Scientist Intern (Amazon) for Summer 2026.</p>
+        </div>
       </div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
-      <div class="strip">
-        <div class="card span-6">
-          <div class="kicker">Profiles</div>
-          <p><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://scholar.google.com/" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://youtube.com/@LuckyNadee" target="_blank" rel="noopener">YouTube</a></p>
-        </div>
-        <div class="card span-6" id="reels">
-          <div class="kicker">60‑Second Reels</div>
-          <p>Embed 1‑minute explainers (YouTube Shorts) for each project to give FAANG reviewers a fast, visual overview.</p>
-          <div class="gallery">
-            <div class="tile span-12" data-type="video" data-src="https://www.youtube.com/embed/VIDEO_ID_SHORT"><img src="/assets/media/short_cover.jpg" alt="Shorts cover"><div class="cap">What is TAIAL?</div></div>
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Contact</h2>
+        <div class="row g-4">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="p-4 card-bg h-100">
+              <h3 class="h5">Get in Touch</h3>
+              <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
+              <p>Lexington, KY, USA</p>
+              <div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="https://github.com/YOUR-USERNAME" target="_blank">GitHub</a><a class="btn btn-soft" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a><a class="btn btn-soft" href="https://scholar.google.com/" target="_blank">Scholar</a><a class="btn btn-soft" href="https://youtube.com/@LuckyNadee" target="_blank">YouTube</a></div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="ratio ratio-21x9 rounded-4 overflow-hidden border"><iframe src="https://www.google.com/maps?q=Lexington,+KY&output=embed" title="Lexington, KY"></iframe></div>
           </div>
         </div>
       </div>
     </section>
-
-    <footer>
-      <small>© <span id="year"></span> Lakmali Nadeesha. Built for GitHub Pages. <span style="opacity:.6">Last updated: Oct 23, 2025.</span></small>
-    </footer>
   </main>
 
-  <!-- Modal viewer for gallery -->
-  <div class="modal" id="modal">
-    <div class="inner">
-      <header class="container" style="display:flex;align-items:center;gap:10px;justify-content:space-between">
-        <strong>Viewer</strong>
-        <button class="close" aria-label="Close" onclick="closeModal()">Close ✕</button>
-      </header>
-      <div class="content" id="modalContent"></div>
+  <footer class="border-top">
+    <div class="container text-center">
+      <small>© <span id="year"></span> Lakmali Nadeesha · Built for GitHub Pages · Last updated: Oct 23, 2025</small>
     </div>
-  </div>
+  </footer>
+
+  <!-- JS libs (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
   <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'); if(id.length>1){e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});} }));
-
     // Theme toggle
-    const key='ln-theme';
-    const apply=(m)=>{document.documentElement.dataset.theme=m; document.querySelector('meta[name="theme-color"]').setAttribute('content', m==='dark'?'#0f172a':'#ffffff')};
-    const init=()=>{const saved=localStorage.getItem(key); if(saved){apply(saved);} else {apply(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}}
-    init();
-    document.getElementById('themeToggle').addEventListener('click',()=>{const cur=document.documentElement.dataset.theme==='dark'?'light':'dark'; localStorage.setItem(key,cur); apply(cur);});
+    const htmlEl=document.documentElement; const themeKey='ln-theme';
+    const applyTheme=(m)=>{htmlEl.setAttribute('data-theme', m); document.querySelector('meta[name="theme-color"]').setAttribute('content', m==='dark'?'#0b1020':'#ffffff')};
+    const initTheme=()=>{const saved=localStorage.getItem(themeKey); applyTheme(saved || (window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))};
+    initTheme();
+    document.getElementById('themeToggle').addEventListener('click',()=>{const m=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark'; localStorage.setItem(themeKey,m); applyTheme(m)});
+
+    // Swiper hero
+    const swiper=new Swiper('.swiper',{loop:true, autoplay:{delay:4000, disableOnInteraction:false}, effect:'fade', pagination:{el:'.swiper-pagination', clickable:true}, navigation:{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}});
+
+    // GLightbox
+    const lightbox=GLightbox({touchNavigation:true, loop:true});
+
+    // AOS
+    AOS.init({once:true, duration:700, offset:50});
+
+    // Copy BibTeX helper
+    function copyBib(id, el){const tpl=document.getElementById(id); if(!tpl) return; const txt=tpl.innerHTML.trim(); navigator.clipboard.writeText(txt).then(()=>{el.textContent='Copied ✓'; setTimeout(()=>el.textContent='Copy BibTeX',1500)});}
+    window.copyBib=copyBib;
 
     // Year
     document.getElementById('year').textContent=new Date().getFullYear();
-
-    // Gallery modal
-    const modal=document.getElementById('modal');
-    const modalContent=document.getElementById('modalContent');
-    function openModal(){modal.classList.add('open');}
-    function closeModal(){modal.classList.remove('open'); modalContent.innerHTML='';}
-    window.closeModal=closeModal;
-    document.querySelectorAll('.tile').forEach(t=>{
-      t.addEventListener('click',()=>{
-        const type=t.dataset.type, src=t.dataset.src; modalContent.innerHTML='';
-        if(type==='img'){
-          const img=new Image(); img.src=src; img.style.maxWidth='100%'; img.style.height='auto'; modalContent.appendChild(img);
-        }else if(type==='video'){
-          const iframe=document.createElement('iframe');
-          iframe.src=src+"?autoplay=1&rel=0"; iframe.width='100%'; iframe.height='560'; iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'; iframe.allowFullscreen=true; modalContent.appendChild(iframe);
-        }
-        openModal();
-      });
-    });
-
-    // Copy BibTeX
-    function copyBib(e, el){
-      e.preventDefault();
-      const tpl=document.getElementById('bib-taial');
-      if(!tpl) return;
-      const text=tpl.innerHTML.trim();
-      navigator.clipboard.writeText(text).then(()=>{el.textContent='Copied ✓'; setTimeout(()=>{el.textContent='Copy BibTeX';},1500)});
-    }
-    window.copyBib=copyBib;
   </script>
 
-  <!--
-  ============================
-  Quick Edit Checklist (media‑rich)
-  ============================
-  1) Put real assets under /assets/media/ and /assets/portrait.jpg
-  2) Replace YouTube VIDEO_ID* placeholders with your video IDs
-  3) Update links for PDF/arXiv/Code/Slides
-  4) Add more .pub entries and project cards as needed
-  5) Repo should be YOUR-USERNAME.github.io with Pages enabled
-  6) Optionally add a CNAME for a custom domain
+  <!-- Quick Setup Notes:
+    1) Create folders and upload assets:
+       /assets/portrait.jpg
+       /assets/hero/{hero1.jpg,hero2.jpg,hero3.jpg}
+       /assets/media/{poster_icip.jpg,award.jpg,vton_grid.jpg,sam_uni_1.jpg,sam_uni_2.jpg,theme_id.jpg,video_cover_2.jpg}
+    2) Replace VIDEO_ID* with your YouTube IDs.
+    3) Replace profile links and add real PDF/arXiv URLs.
+    4) Keep this single file as index.html in YOUR-USERNAME.github.io
+    5) Optional: add a CNAME for custom domain.
   -->
 </body>
 </html>
