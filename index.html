@@ -19,9 +19,11 @@
       --accent2: #e63946;
       --border: rgba(255,255,255,0.08);
       --card-bg: rgba(255,255,255,0.05);
-      /* Sidebar glass (light green, transparent) */
-      --sidebar-glass: rgba(46, 204, 113, 0.10);     /* background */
-      --sidebar-line:  rgba(46, 204, 113, 0.35);     /* border */
+
+      /* Sidebar glass (neutral white, no green) */
+      --sidebar-glass: rgba(255, 255, 255, 0.06);
+      --sidebar-line:  rgba(255, 255, 255, 0.22);
+
       --gradient: linear-gradient(90deg,#0066ff 0%,#00c6ff 100%);
     }
     [data-theme="light"] {
@@ -31,8 +33,11 @@
       --accent2:#d62828;
       --border:rgba(0,0,0,0.08);
       --card-bg:#ffffffd8;
-      --sidebar-glass: rgba(46, 204, 113, 0.12);
-      --sidebar-line:  rgba(46, 204, 113, 0.45);
+
+      /* Sidebar (clean white in light mode) */
+      --sidebar-glass: rgba(255,255,255,0.92);
+      --sidebar-line:  rgba(0,0,0,0.08);
+
       --gradient:linear-gradient(90deg,#0071ff 0%,#00c6ff 100%);
     }
 
@@ -96,8 +101,14 @@
       text-align:center;z-index:2;color:#111;text-shadow:none;
     }
     .hero-text h1 {
-      font-family:'Poppins';font-weight:800;
-      font-size:clamp(22px,2vw,38px);margin-bottom:8px;color:#000;
+      font-family:'Poppins';
+      font-weight:800;
+      font-size:clamp(22px,2vw,38px);
+      margin-bottom:8px;
+      color:#000;
+      white-space: nowrap;        /* ✅ Keeps name on one line */
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .hero-text p {font-size:15px;color:#222;opacity:.96;font-weight:500;line-height:1.35;}
 
@@ -143,14 +154,13 @@
         <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
       </a>
       <a href="https://scholar.google.com/" target="_blank" aria-label="Google Scholar">
-        <!-- Use your provided new logo stored locally -->
         <img src="/assets/hero/Google_Scholar_logo.svg.png" alt="Google Scholar">
       </a>
     </div>
     <div class="theme-toggle" id="themeToggle"><i class="bi bi-brightness-high"></i></div>
   </div>
 
-  <!-- HERO (6+ images; stays fixed while scrolling) -->
+  <!-- HERO -->
   <header class="hero">
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4200" data-bs-pause="hover">
       <div class="carousel-inner">
@@ -172,7 +182,7 @@
       </button>
     </div>
 
-    <!-- Text on top of hero images (no box, professional) -->
+    <!-- Text on top of hero images -->
     <div class="hero-text">
       <h1>Lakmali Nadeesha</h1>
       <p>PhD Researcher · Computer Vision · Medical Imaging</p>
