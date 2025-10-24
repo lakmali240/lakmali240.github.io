@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lakmali Nadeesha | Research Scientist (CV/ML)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="Lakmali Nadeesha — PhD Researcher in Computer Vision & Medical Imaging" />
-  <meta name="author" content="Lakmali Nadeesha" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lakmali Nadeesha | PhD Researcher</title>
 
   <!-- Bootstrap + Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,85 +11,170 @@
   <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
 
   <style>
-  /* ---------------- THEME ---------------- */
-  :root{
-    --bg:#0b1020;--text:#e8edf6;--card:rgba(255,255,255,0.05);
-    --accent:#7aa2ff;--border:rgba(255,255,255,0.1)
-  }
-  [data-theme="light"]{
-    --bg:#f8f9fc;--text:#0b1020;--card:#ffffffcc;
-    --accent:#2563eb;--border:rgba(0,0,0,0.08)
-  }
+    /* ===== THEME COLORS ===== */
+    :root {
+      --bg: #0c1124;
+      --text: #eaf0ff;
+      --accent: #5ea0ff;
+      --border: rgba(255,255,255,0.08);
+      --card-bg: rgba(255,255,255,0.05);
+      --gradient: linear-gradient(90deg, #0048ff 0%, #00c6ff 100%);
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --text: #1a1b1f;
+      --accent: #0071ff;
+      --border: rgba(0,0,0,0.08);
+      --card-bg: #ffffffcc;
+      --gradient: linear-gradient(90deg, #0071ff 0%, #00c6ff 100%);
+    }
 
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-    font-family:Inter,-apple-system,Segoe UI,Roboto,Arial}
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-  /* ---------------- SIDEBAR ---------------- */
-  .sidebar{
-    position:fixed;left:0;top:0;width:230px;height:100vh;
-    background:var(--card);backdrop-filter:blur(10px);
-    border-right:1px solid var(--border);padding:26px 18px;z-index:20
-  }
-  .sidebar h5{font-weight:700}
-  .sidebar ul{list-style:none;padding:0;margin:22px 0}
-  .sidebar a{color:var(--text);text-decoration:none;display:block;padding:8px;border-radius:8px}
-  .sidebar a:hover{background:var(--accent);color:#fff}
-  .social{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-  .social img{width:22px;height:22px}
-  .theme-toggle{
-    position:absolute;bottom:24px;left:24px;width:38px;height:38px;
-    display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--border);border-radius:50%;cursor:pointer;
-    background:var(--card);transition:.3s
-  }
-  .theme-toggle:hover{background:var(--accent);color:#fff}
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0;
+      width: 230px; height: 100vh;
+      background: var(--card-bg);
+      border-right: 1px solid var(--border);
+      padding: 28px 20px;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+    .sidebar h5 { font-weight: 700; margin-bottom: 16px; }
+    .sidebar ul { list-style: none; padding: 0; margin: 0; }
+    .sidebar li { margin-bottom: 10px; }
+    .sidebar a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 8px;
+      border-radius: 8px;
+      display: block;
+      transition: all 0.25s;
+    }
+    .sidebar a:hover {
+      background: var(--gradient);
+      color: #fff;
+      transform: translateX(4px);
+    }
+    .social {
+      display: flex; gap: 10px; margin-top: 20px;
+    }
+    .social img { width: 22px; height: 22px; }
+    .theme-toggle {
+      position: absolute;
+      bottom: 24px; left: 24px;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; cursor: pointer;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+    .theme-toggle:hover {
+      background: var(--gradient);
+      color: #fff;
+    }
 
-  /* ---------------- FIXED HERO ---------------- */
-  .hero{
-    position:fixed;right:0;top:0;width:40%;height:100vh;overflow:hidden;
-    z-index:1;border-left:1px solid var(--border)
-  }
-  .hero .carousel,
-  .hero .carousel-inner,
-  .hero .carousel-item,
-  .hero img{height:100vh;width:100%;object-fit:cover}
-  .hero::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.6));
-    z-index:2}
-  .hero-caption{
-    position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center
-  }
-  .caption-box{
-    background:rgba(255,255,255,0.14);backdrop-filter:blur(8px);
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:18px;padding:24px 28px;text-align:center;
-    color:#fff;max-width:85%;box-shadow:0 8px 40px rgba(0,0,0,.45)
-  }
-  [data-theme="light"] .caption-box{color:#0b1020;background:rgba(255,255,255,0.55)}
+    /* ===== FIXED HERO ===== */
+    .hero {
+      position: fixed;
+      right: 0; top: 0;
+      width: 30%; height: 100vh;
+      overflow: hidden;
+      border-left: 1px solid var(--border);
+      z-index: 1;
+    }
+    .hero .carousel, .hero img {
+      height: 100vh; width: 100%; object-fit: cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.55));
+      z-index: 2;
+    }
+    .hero-text {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      z-index: 3;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .hero-text h1 {
+      font-weight: 800;
+      font-size: clamp(24px, 2vw, 40px);
+      margin-bottom: 6px;
+    }
+    .hero-text p {
+      font-size: clamp(15px, 1.1vw, 18px);
+      font-weight: 400;
+      opacity: 0.9;
+    }
 
-  .caption-box h1{font-weight:800;margin-bottom:10px;font-size:clamp(26px,2.8vw,46px)}
-  .caption-box p{font-size:clamp(15px,1.2vw,20px);margin-bottom:8px}
-  .caption-box .badge-pill{border-radius:999px;padding:.4rem .8rem;margin:3px;
-    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);font-size:.85rem}
-  [data-theme="light"] .caption-box .badge-pill{background:#fff;color:#0b1020;border:1px solid rgba(0,0,0,.1)}
+    /* ===== MAIN CONTENT ===== */
+    .main {
+      margin-left: 230px;
+      margin-right: 30%;
+      position: relative;
+      z-index: 5;
+    }
+    section {
+      padding: 70px 34px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-title {
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 22px;
+    }
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      transition: 0.3s;
+    }
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .date-badge {
+      background: #e1f3e4;
+      color: #1b5e20;
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    .accepted-text { color: var(--accent); font-weight: 600; }
 
-  /* ---------------- MAIN ---------------- */
-  .main{margin-left:230px;margin-right:40%;z-index:5;position:relative}
-  section{padding:70px 34px;border-bottom:1px solid var(--border)}
-  .section-title{font-weight:700;margin-bottom:24px}
-  .card-bg{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px}
-  .news-card{background:var(--card);border:1px solid var(--border);
-    border-radius:12px;padding:18px;margin-bottom:18px;transition:.3s}
-  .news-card:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,.2)}
-  .news-title{font-weight:600}
-  .date-badge{background:#e1f3e4;color:#1b5e20;padding:3px 10px;border-radius:12px;font-weight:700;font-size:.8rem}
-  .accepted-text{color:var(--accent);font-weight:600;font-size:.95rem}
-  footer{padding:40px 30px;text-align:center;color:var(--text);opacity:.7}
+    footer {
+      text-align: center;
+      padding: 40px;
+      opacity: 0.7;
+      color: var(--text);
+    }
+
   </style>
 </head>
 
 <body>
-  <!-- ========== SIDEBAR ========== -->
+  <!-- SIDEBAR -->
   <div class="sidebar">
     <h5>Lakmali Nadeesha</h5>
     <ul>
@@ -103,87 +184,96 @@
       <li><a href="/assets/Lakmali_Nadeesha_CV.pdf" target="_blank">CV</a></li>
     </ul>
     <div class="social">
-      <a href="https://www.linkedin.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"></a>
+      <a href="https://linkedin.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"></a>
       <a href="https://github.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"></a>
       <a href="https://scholar.google.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlescholar.svg"></a>
     </div>
     <div class="theme-toggle" id="themeToggle"><i class="bi bi-brightness-high"></i></div>
   </div>
 
-  <!-- ========== FIXED HERO (Right) ========== -->
+  <!-- HERO SECTION -->
   <header class="hero">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4200">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
       <div class="carousel-inner">
-        <div class="carousel-item active"><img src="/assets/hero/hero1.jpeg" alt="Hero1"></div>
-        <div class="carousel-item"><img src="/assets/hero/hero2.jpeg" alt="Hero2"></div>
-        <div class="carousel-item"><img src="/assets/hero/hero3.jpeg" alt="Hero3"></div>
+        <div class="carousel-item active"><img src="/assets/hero/hero1.jpeg" alt=""></div>
+        <div class="carousel-item"><img src="/assets/hero/hero2.jpeg" alt=""></div>
+        <div class="carousel-item"><img src="/assets/hero/hero3.jpeg" alt=""></div>
       </div>
     </div>
-    <!-- Text overlay -->
-    <div class="hero-caption">
-      <div class="caption-box animate__animated animate__fadeInUp">
-        <h1>Lakmali Nadeesha</h1>
-        <p>PhD Researcher • Computer Vision & Medical Imaging</p>
-        <p>Active Learning • Foundation Models • Generative Modeling</p>
-        <div>
-          <span class="badge-pill">Active Learning</span>
-          <span class="badge-pill">Pathology WSI</span>
-          <span class="badge-pill">Diffusion</span>
-          <span class="badge-pill">SAM-Path / UNI</span>
-        </div>
-      </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-text animate__animated animate__fadeInDown">
+      <h1>Lakmali Nadeesha</h1>
+      <p>PhD Researcher • Computer Vision • Medical Imaging</p>
+      <p>Active Learning | Foundation Models | Generative AI</p>
     </div>
   </header>
 
-  <!-- ========== MAIN CONTENT ========== -->
+  <!-- MAIN CONTENT -->
   <div class="main">
     <section id="about">
       <h2 class="section-title">About Me</h2>
-      <p>I’m a PhD candidate in <strong>Electrical and Computer Engineering</strong> at the University of Kentucky, specializing in <strong>Computer Vision</strong> and <strong>Medical Image Analysis</strong>. My research focuses on data-efficient segmentation through <em>Active Learning</em>, <em>foundation model adaptation</em> (SAM-Path, UNI), and <em>mask-conditioned diffusion</em> for pathology and dermoscopy.</p>
-      <p>I presented <strong>“A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation”</strong> at IEEE ICIP 2025, introducing a hybrid clustering-based active learning framework that addresses cold-start challenges.</p>
-      <p>I’ve also served as a <strong>two-time Amazon Applied Scientist Intern</strong>: (1) Active Learning for Multi-Modal Theme Recognition, and (2) Generative Virtual Try-On with demographic-aware model selection, a refiner network, and automated quality evaluation.</p>
+      <p>
+        I’m a PhD candidate in <strong>Electrical and Computer Engineering</strong> at the <strong>University of Kentucky</strong>,
+        specializing in <strong>Computer Vision</strong> and <strong>Medical Image Analysis</strong>. My research centers on
+        <em>Active Learning</em>, <em>foundation model adaptation</em>, and <em>generative augmentation</em> to build efficient segmentation models
+        for pathology and dermoscopy.
+      </p>
+      <p>
+        My paper <strong>“A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation”</strong>
+        was presented at <strong>IEEE ICIP 2025</strong>, proposing a hybrid feature-based framework that mitigates cold-start challenges.
+      </p>
+      <p>
+        I also bring industrial R&D experience as a <strong>two-time Amazon Applied Scientist Intern</strong> — 
+        one focusing on <em>Active Learning for Multi-Modal Theme Classification</em> and another developing a
+        <em>Generative Virtual Try-On</em> system with a garment refiner and automated evaluation.
+      </p>
     </section>
 
     <section id="news">
-      <h2 class="section-title">Recent News</h2>
+      <h2 class="section-title">Recent Highlights</h2>
 
       <div class="news-card">
-        <div class="d-flex justify-content-between"><div class="news-title">ICIP 2025 Paper Accepted 🎉</div><span class="date-badge">Sep 2025</span></div>
-        <p class="accepted-text">Presented TAIAL framework at IEEE ICIP 2025 (Alaska).</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="news-title fw-semibold">ICIP 2025 Paper Accepted 🎉</div>
+          <span class="date-badge">Sep 2025</span>
+        </div>
+        <p class="accepted-text">Presented TAIAL framework for Adaptive GMM-based Active Learning at IEEE ICIP 2025 (Alaska).</p>
       </div>
 
       <div class="news-card">
-        <div class="d-flex justify-content-between"><div class="news-title">Amazon Internship – Generative Virtual Try-On</div><span class="date-badge">Summer 2025</span></div>
-        <p class="accepted-text">Built demographic-aware VTON pipeline with refiner + auto evaluation.</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="news-title fw-semibold">Amazon Internship – Generative Virtual Try-On</div>
+          <span class="date-badge">Summer 2025</span>
+        </div>
+        <p class="accepted-text">Built a demographic-aware VTON pipeline with a refiner network and automatic quality metrics.</p>
       </div>
 
       <div class="news-card">
-        <div class="d-flex justify-content-between"><div class="news-title">Amazon Internship – Active Learning for Theme Recognition</div><span class="date-badge">Summer 2024</span></div>
-        <p class="accepted-text">Designed multi-modal AL strategy for product theme classification.</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="news-title fw-semibold">Amazon Internship – Multi-Modal Theme Recognition</div>
+          <span class="date-badge">Summer 2024</span>
+        </div>
+        <p class="accepted-text">Developed multi-modal active learning model for product theme classification at scale.</p>
       </div>
     </section>
 
     <section id="contact">
       <h2 class="section-title">Contact</h2>
-      <div class="card-bg">
-        <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
-        <p>Lexington, KY, USA</p>
-        <div class="d-flex gap-2 flex-wrap mt-2">
-          <a class="btn btn-outline-light btn-sm" href="https://github.com/" target="_blank">GitHub</a>
-          <a class="btn btn-outline-light btn-sm" href="https://linkedin.com/" target="_blank">LinkedIn</a>
-          <a class="btn btn-outline-light btn-sm" href="https://scholar.google.com/" target="_blank">Scholar</a>
-          <a class="btn btn-outline-light btn-sm" href="https://youtube.com/" target="_blank">YouTube</a>
-        </div>
+      <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
+      <p>Lexington, KY, USA</p>
+      <div class="d-flex gap-2 flex-wrap mt-2">
+        <a class="btn btn-outline-light btn-sm" href="https://github.com/" target="_blank">GitHub</a>
+        <a class="btn btn-outline-light btn-sm" href="https://linkedin.com/" target="_blank">LinkedIn</a>
+        <a class="btn btn-outline-light btn-sm" href="https://scholar.google.com/" target="_blank">Scholar</a>
       </div>
     </section>
 
     <footer>© <span id="year"></span> Lakmali Nadeesha · Built for GitHub Pages</footer>
   </div>
 
-  <!-- ========== JS ========== -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // theme toggle
     const htmlEl=document.documentElement, key='theme-mode';
     const setTheme=(m)=>{htmlEl.setAttribute('data-theme',m);localStorage.setItem(key,m)};
     setTheme(localStorage.getItem(key)||'dark');
@@ -197,6 +287,7 @@
   </script>
 </body>
 </html>
+
 
 
 
