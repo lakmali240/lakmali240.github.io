@@ -1,293 +1,346 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Lakmali Nadeesha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="Lakmali Nadeesha — Computer Vision & Medical Imaging" />
-  <meta name="keywords" content="portfolio, academic website, computer vision, medical imaging, active learning, diffusion" />
+  <meta name="description" content="Lakmali Nadeesha | PhD Candidate, University of Kentucky" />
   <meta name="author" content="Lakmali Nadeesha" />
+  <meta name="theme-color" content="#0b1020" />
 
-  <!-- Bootstrap (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Optional: animate / owl / magnific (keep if you use them elsewhere) -->
-  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    /* ======= CORE LAYOUT (keeps Atik’s side menu + subpages vibe) ======= */
-    body{background:#0f1424;color:#e8edf6;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    a{color:#9bc0ff;text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    .page{max-width:1400px;margin:0 auto}
-    .site-nav{position:fixed;left:0;top:0;height:100vh;width:240px;background:#0b1020;border-right:1px solid rgba(255,255,255,.08);padding:22px 18px;z-index:999}
-    .site-main{margin-left:240px}
-
-    .site-main-menu{list-style:none;margin:18px 0 0;padding:0}
-    .site-main-menu li{margin:8px 0}
-    .site-main-menu a{display:block;padding:8px 10px;border-radius:8px;color:#e8edf6}
-    .site-main-menu a:hover{background:rgba(255,255,255,.06)}
-
-    .social-links{list-style:none;margin:16px 0 0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
-    .social-links img{width:22px;height:22px}
-
-    section{padding:50px 28px;border-top:1px dashed rgba(255,255,255,.08)}
-    .section-title{margin-bottom:16px}
-
-    /* ======= HERO: TEXT LEFT, SLIDER RIGHT ======= */
-    header.header{padding:0;border-bottom:1px solid rgba(255,255,255,.08)}
-    .hero-split{display:grid;grid-template-columns:1.1fr 1.4fr;min-height:88vh}
-    @media (max-width: 992px){.hero-split{grid-template-columns:1fr}}
-    .hero-left{display:flex;align-items:center;justify-content:center;padding:40px}
-    .caption-card{
-      background:#ffffffeb;color:#0f172a;border:1px solid rgba(0,0,0,.06);
-      border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25);
-      padding:22px;max-width:760px;width:100%;
+    /* ==============================
+       THEME VARIABLES
+    ============================== */
+    :root {
+      --bg: #0b1020;
+      --text: #e8edf6;
+      --card-bg: rgba(255,255,255,0.03);
+      --accent: #7aa2ff;
+      --border: rgba(255,255,255,0.1);
     }
-    .caption-card h1{font-weight:800;margin:0 0 6px;font-size:clamp(28px,3.2vw,48px)}
-    .caption-card p{margin:0 0 8px;font-size:clamp(16px,1.2vw,20px)}
-    .caption-card .badges{margin-top:8px}
-    .badge-chip{
-      display:inline-block;border-radius:999px;padding:.38rem .7rem;
-      border:1px solid rgba(0,0,0,.18);background:#fff;color:#0f172a;
-      font-size:.88rem;margin:.18rem .28rem .18rem 0
-    }
-    .caption-divider{height:1px;background:rgba(0,0,0,.08);margin:8px 0 12px}
 
-    .hero-right{position:relative}
-    .hero-right .carousel,
-    .hero-right .carousel-inner,
-    .hero-right .carousel-item,
-    .hero-right .carousel-item img{height:88vh}
-    .hero-right img{width:100%;height:100%;object-fit:cover}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.32));pointer-events:none}
-
-    /* ======= NEWS CARDS (from the Atik style) ======= */
-    .news-card{
-      border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px 18px;margin-bottom:18px;
-      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.05));
-      box-shadow:0 6px 14px rgba(0,0,0,.18);transition:.25s transform,.25s box-shadow
+    [data-theme="light"] {
+      --bg: #f9f9fb;
+      --text: #0b1020;
+      --card-bg: #ffffff;
+      --accent: #2563eb;
+      --border: rgba(0,0,0,0.08);
     }
-    .news-card:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,.22)}
-    .news-header{display:flex;justify-content:space-between;gap:14px}
-    .news-title{font-weight:700;font-size:1.02rem}
-    .date-badge{
-      font-size:.85rem;background:#e1f3e4;color:#1b5e20;padding:4px 10px;border-radius:12px;font-weight:700;white-space:nowrap
-    }
-    .accepted-text{color:#b5f3c0;font-weight:700;font-size:.95rem;margin:6px 0 10px}
-    .news-links a{display:inline-block;margin-right:10px;padding:6px 12px;font-size:.85rem;border-radius:6px;text-decoration:none}
-    .news-links .pdf-link{background:#b31b1b;color:#fff}
-    .news-links .pdf-link:hover{background:#9e1717}
-    .news-links .code-link{background:#eaeaea;color:#333}
 
-    /* ======= CONTACT ======= */
-    .card-bg{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:18px}
-    footer{padding:36px 28px;color:#a9b4c9;border-top:1px solid rgba(255,255,255,.08)}
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      overflow-x: hidden;
+    }
+
+    /* ==============================
+       SIDE MENU
+    ============================== */
+    .site-nav {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 230px;
+      background: var(--card-bg);
+      border-right: 1px solid var(--border);
+      padding: 24px 18px;
+      z-index: 10;
+    }
+
+    .site-main-menu {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .site-main-menu li {
+      margin-bottom: 12px;
+    }
+
+    .site-main-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    .site-main-menu a:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .social-links {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin-top: 12px;
+    }
+
+    .social-links img {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ==============================
+       FIXED HERO SECTION
+    ============================== */
+    header.hero-fixed {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 55%;
+      height: 100vh;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-fixed .carousel,
+    .hero-fixed .carousel-inner,
+    .hero-fixed .carousel-item,
+    .hero-fixed img {
+      height: 100vh;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* ==============================
+       MAIN CONTENT AREA
+    ============================== */
+    .site-main {
+      margin-left: 230px;
+      margin-right: 55%;
+      padding: 0;
+      position: relative;
+      z-index: 2;
+      background: var(--bg);
+    }
+
+    section {
+      padding: 60px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .card-bg {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .news-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+    }
+
+    .date-badge {
+      background: #e1f3e4;
+      color: #317245;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .accepted-text {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      color: var(--text);
+      opacity: 0.7;
+    }
+
+    /* ==============================
+       THEME TOGGLE BUTTON
+    ============================== */
+    .theme-toggle {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: #fff;
+    }
   </style>
 </head>
+
 <body>
-  <div id="page" class="page">
-    <!-- ===== SIDE NAV (same structure/feel as Atik) ===== -->
-    <div class="site-nav mobile-menu-hide">
-      <div class="d-flex align-items-center gap-2 mb-2">
-        <div class="rounded-circle" style="width:36px;height:36px;background:#1b2545"></div>
-        <strong>Lakmali Nadeesha</strong>
-      </div>
-      <ul id="nav" class="site-main-menu">
-        <li><a class="pt-trigger" href="#about_me">About me</a></li>
-        <li><a href="/assets/Lakmali_Nadeesha_CV.pdf" target="_blank">CV</a></li>
-        <li><a class="pt-trigger" href="#contact">Contact</a></li>
-      </ul>
+  <!-- ========== SIDE MENU ========== -->
+  <div class="site-nav">
+    <h5 style="font-weight:700;">Lakmali Nadeesha</h5>
+    <ul class="site-main-menu">
+      <li><a href="#about_me">About me</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="/assets/Lakmali_Nadeesha_CV.pdf" target="_blank">CV</a></li>
+    </ul>
 
-      <ul class="social-links">
-        <!-- Replace icons/paths if you have local .ico files -->
-        <li><a class="tip social-button" target="_blank" href="https://www.linkedin.com/" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="in"></a></li>
-        <li><a class="tip social-button" target="_blank" href="https://github.com/" title="GitHub"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="gh"></a></li>
-        <li><a class="tip social-button" target="_blank" href="https://scholar.google.com/" title="Scholar"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlescholar.svg" alt="scholar"></a></li>
-      </ul>
-    </div>
+    <ul class="social-links">
+      <li><a href="https://www.linkedin.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"></a></li>
+      <li><a href="https://github.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"></a></li>
+      <li><a href="https://scholar.google.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlescholar.svg"></a></li>
+    </ul>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div id="main" class="site-main">
-      <!-- ===== HEADER (Hero split: TEXT LEFT, SLIDER RIGHT) ===== -->
-      <header id="site_header" class="header">
-        <div class="hero-split">
-          <!-- LEFT: Your name + tagline (as requested, black/dark readable text) -->
-          <div class="hero-left">
-            <div class="caption-card">
-              <h1 class="animate__animated animate__fadeInUp">Lakmali Nadeesha</h1>
-              <div class="caption-divider"></div>
-              <p class="animate__animated animate__fadeInUp animate__delay-1s">
-                <strong>PhD Researcher</strong> • <strong>Computer Vision &amp; Medical Imaging</strong> •
-                <strong>Active Learning</strong> • <strong>Foundation Models</strong> • <strong>Generative Modeling</strong>
-              </p>
-              <div class="badges">
-                <span class="badge-chip">Active Learning</span>
-                <span class="badge-chip">Pathology WSI</span>
-                <span class="badge-chip">Diffusion</span>
-                <span class="badge-chip">SAM-Path / UNI</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- RIGHT: Auto-slide hero images -->
-          <div class="hero-right">
-            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4200">
-              <div class="carousel-inner">
-                <!-- Replace images below with your files -->
-                <div class="carousel-item active">
-                  <img src="/assets/hero/hero1.jpeg" class="d-block w-100" alt="Hero 1" />
-                </div>
-                <div class="carousel-item">
-                  <img src="/assets/hero/hero2.jpeg" class="d-block w-100" alt="Hero 2" />
-                </div>
-                <div class="carousel-item">
-                  <img src="/assets/hero/hero3.jpeg" class="d-block w-100" alt="Hero 3" />
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <div class="hero-overlay"></div>
-          </div>
-        </div>
-      </header>
-
-      <!-- ===== SUBPAGES (same feel as Atik) ===== -->
-      <div class="subpages">
-        <!-- ===== About Me Subpage ===== -->
-        <section class="pt-page pt-page-1" id="about_me">
-          <div class="section-title-block px-3">
-            <h2 class="section-title">About me</h2>
-          </div>
-
-          <div class="row px-3">
-            <div class="col-12">
-              <div class="general-info">
-                <p class="bio-paragraph" style="font-size:1.02rem;line-height:1.7;color:#dbe4ff;max-width:1000px">
-                  I’m a PhD candidate in <strong>Electrical &amp; Computer Engineering</strong> at the University of Kentucky,
-                  focusing on <strong>computer vision</strong> and <strong>medical imaging</strong>. My recent work explores
-                  <em>data-efficient segmentation</em> through <strong>Active Learning</strong>, foundation-model adaptation
-                  (e.g., <strong>SAM-Path, UNI</strong>), and <em>mask-conditioned diffusion</em> for whole-slide pathology and dermoscopy.
-                </p>
-                <p class="bio-paragraph" style="font-size:1.02rem;line-height:1.7;color:#dbe4ff;max-width:1000px">
-                  Highlights include an ICIP 2025 paper on <strong>Adaptive GMM-based early-stage selection (TAIAL)</strong>,
-                  and two <strong>Amazon Applied Scientist</strong> internships: (1) <strong>Active Learning</strong> for
-                  multi-modal, multi-class theme recognition; and (2) a <strong>Generative Virtual Try-On</strong> pipeline with
-                  demographic-aware model selection, a garment-fidelity <strong>refiner</strong>, and a fully automated
-                  <strong>quality evaluation</strong> system. I enjoy building robust training on DGX/HPC and collaborating on
-                  problems where smarter data reduces labeling costs.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== Recent News (same card style/flow as your sample) ===== -->
-          <div class="row px-3">
-            <h3 class="text-decoration-underline mb-3">RECENT NEWS</h3>
-
-            <div class="news-card">
-              <div class="news-header">
-                <div class="news-title">A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</div>
-                <span class="date-badge">Sep 2025</span>
-              </div>
-              <p class="accepted-text">Accepted at ICIP 2025 (IEEE)</p>
-              <div class="news-links">
-                <!-- Replace with real links when available -->
-                <a href="#" class="pdf-link" target="_blank">📄 Paper</a>
-                <a href="#" class="code-link" target="_blank">▶️ Video</a>
-                <a href="#" class="code-link" style="cursor:not-allowed">💻 Code (coming soon)</a>
-              </div>
-            </div>
-
-            <div class="news-card">
-              <div class="news-header">
-                <div class="news-title">Amazon Internship — Generative Virtual Try-On</div>
-                <span class="date-badge">Summer 2025</span>
-              </div>
-              <p class="accepted-text">Demographic-aware model selection, garment refiner, and automated quality evaluation.</p>
-            </div>
-
-            <div class="news-card">
-              <div class="news-header">
-                <div class="news-title">Amazon Internship — Multi-Modal Theme Recognition</div>
-                <span class="date-badge">Summer 2024</span>
-              </div>
-              <p class="accepted-text">Active learning for multi-modal, multi-class classification at scale.</p>
-            </div>
-          </div>
-        </section>
-        <!-- ===== End About ===== -->
-
-        <!-- ===== Contact Subpage ===== -->
-        <section class="pt-page pt-page-2" id="contact">
-          <div class="section-title-block px-3">
-            <h2 class="section-title">Contact</h2>
-            <h5 class="section-description">Get in Touch</h5>
-          </div>
-
-          <div class="row px-3 g-3">
-            <div class="col-md-6">
-              <div class="card-bg h-100">
-                <h3 class="h5">Get in Touch</h3>
-                <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
-                <p>Lexington, KY, USA</p>
-                <div class="d-flex flex-wrap gap-2 mt-2">
-                  <a class="btn btn-outline-light btn-sm" href="https://github.com/" target="_blank">GitHub</a>
-                  <a class="btn btn-outline-light btn-sm" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-                  <a class="btn btn-outline-light btn-sm" href="https://scholar.google.com/" target="_blank">Scholar</a>
-                  <a class="btn btn-outline-light btn-sm" href="https://youtube.com/" target="_blank">YouTube</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="ratio ratio-21x9 rounded-3 overflow-hidden border">
-                <iframe src="https://www.google.com/maps?q=Lexington,+KY&output=embed" title="Lexington, KY"></iframe>
-              </div>
-            </div>
-          </div>
-
-          <div class="px-3 mt-3">
-            <!-- Optional visitor map image (replace if you want) -->
-            <!-- <a href="#" title="Visit tracker"><img src="#" alt="visits"/></a> -->
-          </div>
-        </section>
-        <!-- ===== End Contact ===== -->
-      </div>
-
-      <footer class="text-center">
-        <small>© <span id="year"></span> Lakmali Nadeesha · Built for GitHub Pages</small>
-      </footer>
+    <div class="theme-toggle" id="themeToggle">
+      <i class="bi bi-brightness-high"></i>
     </div>
   </div>
 
-  <!-- JS (Bootstrap) -->
+  <!-- ========== FIXED HERO IMAGES ========== -->
+  <header class="hero-fixed">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/assets/hero/hero1.jpeg" alt="Hero 1">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/hero/hero2.jpeg" alt="Hero 2">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/hero/hero3.jpeg" alt="Hero 3">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT AREA ========== -->
+  <div class="site-main">
+    <!-- About -->
+    <section id="about_me">
+      <h2 class="section-title">About Me</h2>
+      <p>
+        I’m a PhD candidate in <strong>Electrical and Computer Engineering</strong> at the <strong>University of Kentucky</strong>,
+        specializing in <strong>Computer Vision</strong> and <strong>Medical Image Analysis</strong>. My research focuses on
+        <strong>data-efficient learning</strong> for medical image segmentation — integrating
+        <em>Active Learning</em>, <em>foundation model adaptation</em>, and <em>mask-conditioned diffusion</em>.
+      </p>
+      <p>
+        I have presented my work <strong>“A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation”</strong>
+        at <strong>IEEE ICIP 2025</strong>, introducing a hybrid clustering-based active learning framework that addresses cold-start challenges.
+      </p>
+      <p>
+        I also bring industry research experience as a <strong>two-time Amazon Applied Scientist Intern</strong> — one focusing on
+        <em>Active Learning for Multi-Modal Classification</em> and another on
+        <em>Generative Virtual Try-On</em> with automated quality evaluation.
+      </p>
+    </section>
+
+    <!-- Recent News -->
+    <section id="news">
+      <h2 class="section-title">Recent News</h2>
+
+      <div class="news-card">
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="news-title"><strong>ICIP 2025 Paper Accepted!</strong></div>
+          <span class="date-badge">Sep 2025</span>
+        </div>
+        <p class="accepted-text">Presented our TAIAL framework at IEEE ICIP 2025, Alaska.</p>
+      </div>
+
+      <div class="news-card">
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="news-title"><strong>Amazon Internship (Generative Modeling)</strong></div>
+          <span class="date-badge">Summer 2025</span>
+        </div>
+        <p class="accepted-text">Developed demographic-aware generative virtual try-on with refiner module and automatic evaluation.</p>
+      </div>
+
+      <div class="news-card">
+        <div class="d-flex justify-content-between align-items-start">
+          <div class="news-title"><strong>Amazon Internship (Active Learning)</strong></div>
+          <span class="date-badge">Summer 2024</span>
+        </div>
+        <p class="accepted-text">Implemented multi-modal active learning pipeline for theme identification.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="card-bg">
+        <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
+        <p>Lexington, KY, USA</p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a class="btn btn-outline-light btn-sm" href="https://github.com/" target="_blank">GitHub</a>
+          <a class="btn btn-outline-light btn-sm" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+          <a class="btn btn-outline-light btn-sm" href="https://scholar.google.com/" target="_blank">Scholar</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Lakmali Nadeesha · Built for GitHub Pages
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    document.getElementById('year').textContent=new Date().getFullYear();
-  </script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const themeKey = 'theme-mode';
 
-  <!-- SETUP NOTES:
-    1) Put your hero images at:
-       /assets/hero/hero1.jpeg
-       /assets/hero/hero2.jpeg
-       /assets/hero/hero3.jpeg
-    2) Put your CV at: /assets/Lakmali_Nadeesha_CV.pdf and update the link above if needed.
-    3) Replace social/profile links with your real URLs.
-    4) To keep EXACT fonts/colors as Atik’s theme.css, you can still include his CSS files;
-       this file is self-contained and won’t break without them.
-  -->
+    const applyTheme = (mode) => {
+      htmlEl.setAttribute('data-theme', mode);
+      localStorage.setItem(themeKey, mode);
+    };
+
+    const current = localStorage.getItem(themeKey) || 'dark';
+    applyTheme(current);
+
+    themeToggle.addEventListener('click', () => {
+      const newMode = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(newMode);
+      themeToggle.innerHTML = newMode === 'dark'
+        ? '<i class="bi bi-brightness-high"></i>'
+        : '<i class="bi bi-moon"></i>';
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
 
 
 
