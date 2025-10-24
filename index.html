@@ -35,7 +35,13 @@
     .btn-soft{border:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.04));color:var(--text)}
     .btn-soft:hover{border-color:var(--ring);box-shadow:0 0 0 3px rgba(110,168,254,.35)}
 
-    /* Badges */
+    /* Hero Swiper */
+    .hero{position:relative}
+    .hero .swiper{width:100%;height:100vh}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.65))}
+    .hero .caption{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);text-align:center;max-width:1100px;padding:0 16px}
+    .hero h1{font-size:clamp(28px,3.8vw,56px);margin-bottom:8px}
+    .hero p{font-size:clamp(16px,1.4vw,20px)}
     .badge-pill{border-radius:999px;padding:.4rem .7rem;border:1px solid rgba(255,255,255,.2);font-size:.85rem;margin:.15rem}
 
     /* Sections */
@@ -48,7 +54,7 @@
     .pub .meta{color:var(--muted);font-size:.95rem}
     .pub .links a{margin-right:10px}
 
-    /* Gallery (glightbox theme text color fix) */
+    /* Gallery */
     .glightbox-clean .gslide-title{color:#111}
 
     /* Timeline */
@@ -58,29 +64,38 @@
     /* Footer */
     footer{padding:50px 0;color:var(--muted)}
 
-    /* ===========================
-       SPLIT HERO (text left + portrait carousel right)
-       =========================== */
-    .hero--split { min-height: min(100vh, 780px); display: flex; align-items: center; position: relative; }
-    .caption-static h1 { font-size: clamp(28px, 3.8vw, 56px); margin-bottom: .35rem; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
-    .caption-static p  { color: #e5e7eb; font-size: clamp(16px,1.2vw,20px); text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+    /* ---------- READABLE CAPTION CARD + STACKING FIX ---------- */
+    /* Ensure caption sits above slides and overlay */
+    .hero .swiper            { position: relative; z-index: 1; }
+    .hero .overlay           { position: absolute; inset: 0; z-index: 2; }
+    .hero .caption           { position: absolute; z-index: 3; }
 
-    .portrait-wrap { display: flex; justify-content: center; }
-    .portrait-swiper {
-      position: relative;
-      width: min(480px, 100%);
-      aspect-ratio: 9/16;                  /* portrait shape */
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 20px 50px rgba(2,6,23,.35);
-      background: #000;
+    /* White translucent card for readable black text on any image */
+    .caption-inner{
+      display:inline-block;
+      background: rgba(255,255,255,0.92);
+      color:#0f172a;                    /* dark text inside */
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border:1px solid rgba(0,0,0,0.06);
+      border-radius:16px;
+      padding:18px 22px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.28);
+      max-width: min(92vw, 900px);
     }
-    .portrait-swiper img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .portrait-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.25)); pointer-events: none; z-index: 2; }
-    .portrait-swiper .swiper-button-prev,
-    .portrait-swiper .swiper-button-next { color: #fff; width: 34px; height: 34px; }
-    .portrait-swiper .swiper-pagination-bullet { background: rgba(255,255,255,.75); }
+    .hero .caption h1,
+    .hero .caption p{
+      color:#0f172a !important;
+      text-shadow:none !important;
+    }
+    .caption-inner .badge-pill{
+      background:#ffffff;
+      color:#0f172a;
+      border-color: rgba(0,0,0,0.18);
+    }
+    @media (min-width: 768px){
+      .caption-divider{height:1px; background:rgba(0,0,0,0.08); margin:8px 0 10px;}
+    }
   </style>
 </head>
 <body>
@@ -109,47 +124,40 @@
     </div>
   </nav>
 
-  <!-- HERO (split: text left, portrait images right) -->
-  <header class="hero--split">
-    <div class="container h-100">
-      <div class="row align-items-center g-4 h-100">
-        <!-- Left: Title + tagline (always visible) -->
-        <div class="col-lg-6">
-          <div class="caption-static">
-            <h1 class="animate__animated animate__fadeInUp mb-2">Lakmali Nadeesha</h1>
-            <p class="animate__animated animate__fadeInUp animate__delay-1s mb-3">
-              PhD Researcher • Computer Vision &amp; Medical Imaging • Active Learning • Foundation Models • Generative Modeling
-            </p>
-            <div class="mt-2">
-              <span class="badge-pill">Active Learning</span>
-              <span class="badge-pill">Pathology WSI</span>
-              <span class="badge-pill">Diffusion</span>
-              <span class="badge-pill">SAM-Path / UNI</span>
-            </div>
-          </div>
+  <!-- Hero: full-screen slider -->
+  <header class="hero">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="/assets/hero/hero1.jpeg" class="w-100 h-100 object-fit-cover" alt="WSI montage" />
         </div>
+        <div class="swiper-slide">
+          <img src="/assets/hero/hero2.jpeg" class="w-100 h-100 object-fit-cover" alt="Segmentation overlays" />
+        </div>
+        <div class="swiper-slide">
+          <img src="/assets/hero/hero3.jpeg" class="w-100 h-100 object-fit-cover" alt="Conference photo" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <div class="overlay"></div>
 
-        <!-- Right: portrait carousel -->
-        <div class="col-lg-6">
-          <div class="portrait-wrap">
-            <div class="swiper portrait-swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="/assets/hero/hero1.jpeg" alt="Portrait slide 1">
-                </div>
-                <div class="swiper-slide">
-                  <img src="/assets/hero/hero2.jpeg" alt="Portrait slide 2">
-                </div>
-                <div class="swiper-slide">
-                  <img src="/assets/hero/hero3.jpeg" alt="Portrait slide 3">
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-              <div class="portrait-overlay"></div>
-            </div>
-          </div>
+    <!-- UPDATED CAPTION: wrapped in a readable white card -->
+    <div class="caption">
+      <div class="caption-inner">
+        <h1 class="animate__animated animate__fadeInUp mb-2">Lakmali Nadeesha</h1>
+        <div class="caption-divider"></div>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s mb-2">
+          <strong>PhD Researcher</strong> • <strong>Computer Vision &amp; Medical Imaging</strong> •
+          <strong>Active Learning</strong> • <strong>Foundation Models</strong> • <strong>Generative Modeling</strong>
+        </p>
+        <div class="mt-2">
+          <span class="badge-pill">Active Learning</span>
+          <span class="badge-pill">Pathology WSI</span>
+          <span class="badge-pill">Diffusion</span>
+          <span class="badge-pill">SAM-Path / UNI</span>
         </div>
       </div>
     </div>
@@ -364,16 +372,13 @@
     initTheme();
     document.getElementById('themeToggle').addEventListener('click',()=>{const m=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark'; localStorage.setItem(themeKey,m); applyTheme(m)});
 
-    // Portrait Swiper (hero right side)
-    const portraitSwiper = new Swiper('.portrait-swiper', {
-      loop: true,
-      autoplay: { delay: 3500, disableOnInteraction: false },
-      effect: 'fade',
-      pagination: { el: '.portrait-swiper .swiper-pagination', clickable: true },
-      navigation: {
-        nextEl: '.portrait-swiper .swiper-button-next',
-        prevEl: '.portrait-swiper .swiper-button-prev'
-      }
+    // Swiper hero
+    const swiper=new Swiper('.swiper',{
+      loop:true,
+      autoplay:{delay:4000, disableOnInteraction:false},
+      effect:'fade',
+      pagination:{el:'.swiper-pagination', clickable:true},
+      navigation:{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}
     });
 
     // GLightbox
@@ -383,7 +388,14 @@
     AOS.init({once:true, duration:700, offset:50});
 
     // Copy BibTeX helper
-    function copyBib(id, el){const tpl=document.getElementById(id); if(!tpl) return; const txt=tpl.innerHTML.trim(); navigator.clipboard.writeText(txt).then(()=>{el.textContent='Copied ✓'; setTimeout(()=>el.textContent='Copy BibTeX',1500)});}
+    function copyBib(id, el){
+      const tpl=document.getElementById(id); if(!tpl) return;
+      const txt=tpl.innerHTML.trim();
+      navigator.clipboard.writeText(txt).then(()=>{
+        el.textContent='Copied ✓';
+        setTimeout(()=>el.textContent='Copy BibTeX',1500);
+      });
+    }
     window.copyBib=copyBib;
 
     // Year
@@ -391,14 +403,16 @@
   </script>
 
   <!-- Quick Setup Notes:
-    1) Upload assets:
+    1) Create folders and upload assets:
        /assets/portrait.jpg
        /assets/hero/{hero1.jpeg,hero2.jpeg,hero3.jpeg}
        /assets/media/{poster_icip.jpg,award.jpg,vton_grid.jpg,sam_uni_1.jpg,sam_uni_2.jpg,theme_id.jpg,video_cover_2.jpg}
-    2) Replace VIDEO_ID* with YouTube IDs; update links.
-    3) Keep this as index.html in YOUR-USERNAME.github.io
-    4) Optional: add a CNAME for a custom domain.
+    2) Replace VIDEO_ID* with your YouTube IDs.
+    3) Replace profile links and add real PDF/arXiv URLs.
+    4) Keep this single file as index.html in YOUR-USERNAME.github.io
+    5) Optional: add a CNAME for custom domain.
   -->
 </body>
 </html>
+
 
