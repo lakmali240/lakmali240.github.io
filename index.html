@@ -3,341 +3,197 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lakmali Nadeesha</title>
+  <title>Lakmali Nadeesha | Research Scientist (CV/ML)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="Lakmali Nadeesha | PhD Candidate, University of Kentucky" />
+  <meta name="description" content="Lakmali Nadeesha — PhD Researcher in Computer Vision & Medical Imaging" />
   <meta name="author" content="Lakmali Nadeesha" />
   <meta name="theme-color" content="#0b1020" />
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap + Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet">
 
   <style>
-    /* ==============================
-       THEME VARIABLES
-    ============================== */
-    :root {
-      --bg: #0b1020;
-      --text: #e8edf6;
-      --card-bg: rgba(255,255,255,0.03);
-      --accent: #7aa2ff;
-      --border: rgba(255,255,255,0.1);
-    }
+  /* ---------------- THEME ---------------- */
+  :root{
+    --bg:#0b1020;--text:#e8edf6;--card:rgba(255,255,255,0.05);
+    --accent:#7aa2ff;--border:rgba(255,255,255,0.1)
+  }
+  [data-theme="light"]{
+    --bg:#f8f9fc;--text:#0b1020;--card:#ffffffcc;
+    --accent:#2563eb;--border:rgba(0,0,0,0.08)
+  }
 
-    [data-theme="light"] {
-      --bg: #f9f9fb;
-      --text: #0b1020;
-      --card-bg: #ffffff;
-      --accent: #2563eb;
-      --border: rgba(0,0,0,0.08);
-    }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:Inter,-apple-system,Segoe UI,Roboto,Arial}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      overflow-x: hidden;
-    }
+  /* ---------------- SIDEBAR ---------------- */
+  .sidebar{
+    position:fixed;left:0;top:0;width:230px;height:100vh;
+    background:var(--card);backdrop-filter:blur(10px);
+    border-right:1px solid var(--border);padding:26px 18px;z-index:20
+  }
+  .sidebar h5{font-weight:700}
+  .sidebar ul{list-style:none;padding:0;margin:22px 0}
+  .sidebar a{color:var(--text);text-decoration:none;display:block;padding:8px;border-radius:8px}
+  .sidebar a:hover{background:var(--accent);color:#fff}
+  .social{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .social img{width:22px;height:22px}
+  .theme-toggle{
+    position:absolute;bottom:24px;left:24px;width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--border);border-radius:50%;cursor:pointer;
+    background:var(--card);transition:.3s
+  }
+  .theme-toggle:hover{background:var(--accent);color:#fff}
 
-    /* ==============================
-       SIDE MENU
-    ============================== */
-    .site-nav {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 230px;
-      background: var(--card-bg);
-      border-right: 1px solid var(--border);
-      padding: 24px 18px;
-      z-index: 10;
-    }
+  /* ---------------- FIXED HERO ---------------- */
+  .hero{
+    position:fixed;right:0;top:0;width:40%;height:100vh;overflow:hidden;
+    z-index:1;border-left:1px solid var(--border)
+  }
+  .hero .carousel,
+  .hero .carousel-inner,
+  .hero .carousel-item,
+  .hero img{height:100vh;width:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.6));
+    z-index:2}
+  .hero-caption{
+    position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center
+  }
+  .caption-box{
+    background:rgba(255,255,255,0.14);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:18px;padding:24px 28px;text-align:center;
+    color:#fff;max-width:85%;box-shadow:0 8px 40px rgba(0,0,0,.45)
+  }
+  [data-theme="light"] .caption-box{color:#0b1020;background:rgba(255,255,255,0.55)}
 
-    .site-main-menu {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0;
-    }
+  .caption-box h1{font-weight:800;margin-bottom:10px;font-size:clamp(26px,2.8vw,46px)}
+  .caption-box p{font-size:clamp(15px,1.2vw,20px);margin-bottom:8px}
+  .caption-box .badge-pill{border-radius:999px;padding:.4rem .8rem;margin:3px;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);font-size:.85rem}
+  [data-theme="light"] .caption-box .badge-pill{background:#fff;color:#0b1020;border:1px solid rgba(0,0,0,.1)}
 
-    .site-main-menu li {
-      margin-bottom: 12px;
-    }
-
-    .site-main-menu a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      display: block;
-      padding: 6px 10px;
-      border-radius: 6px;
-    }
-
-    .site-main-menu a:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .social-links {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding: 0;
-      margin-top: 12px;
-    }
-
-    .social-links img {
-      width: 22px;
-      height: 22px;
-    }
-
-    /* ==============================
-       FIXED HERO SECTION
-    ============================== */
-    header.hero-fixed {
-      position: fixed;
-      right: 0;
-      top: 0;
-      width: 55%;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .hero-fixed .carousel,
-    .hero-fixed .carousel-inner,
-    .hero-fixed .carousel-item,
-    .hero-fixed img {
-      height: 100vh;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    /* ==============================
-       MAIN CONTENT AREA
-    ============================== */
-    .site-main {
-      margin-left: 230px;
-      margin-right: 55%;
-      padding: 0;
-      position: relative;
-      z-index: 2;
-      background: var(--bg);
-    }
-
-    section {
-      padding: 60px 32px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-title {
-      font-weight: 700;
-      margin-bottom: 24px;
-    }
-
-    .card-bg {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 20px;
-    }
-
-    .news-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 16px;
-    }
-
-    .date-badge {
-      background: #e1f3e4;
-      color: #317245;
-      border-radius: 12px;
-      padding: 4px 10px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-
-    .accepted-text {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      padding: 40px;
-      text-align: center;
-      color: var(--text);
-      opacity: 0.7;
-    }
-
-    /* ==============================
-       THEME TOGGLE BUTTON
-    ============================== */
-    .theme-toggle {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      background: var(--card-bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      background: var(--accent);
-      color: #fff;
-    }
+  /* ---------------- MAIN ---------------- */
+  .main{margin-left:230px;margin-right:40%;z-index:5;position:relative}
+  section{padding:70px 34px;border-bottom:1px solid var(--border)}
+  .section-title{font-weight:700;margin-bottom:24px}
+  .card-bg{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 22px}
+  .news-card{background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:18px;margin-bottom:18px;transition:.3s}
+  .news-card:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,.2)}
+  .news-title{font-weight:600}
+  .date-badge{background:#e1f3e4;color:#1b5e20;padding:3px 10px;border-radius:12px;font-weight:700;font-size:.8rem}
+  .accepted-text{color:var(--accent);font-weight:600;font-size:.95rem}
+  footer{padding:40px 30px;text-align:center;color:var(--text);opacity:.7}
   </style>
 </head>
 
 <body>
-  <!-- ========== SIDE MENU ========== -->
-  <div class="site-nav">
-    <h5 style="font-weight:700;">Lakmali Nadeesha</h5>
-    <ul class="site-main-menu">
-      <li><a href="#about_me">About me</a></li>
+  <!-- ========== SIDEBAR ========== -->
+  <div class="sidebar">
+    <h5>Lakmali Nadeesha</h5>
+    <ul>
+      <li><a href="#about">About Me</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="/assets/Lakmali_Nadeesha_CV.pdf" target="_blank">CV</a></li>
     </ul>
-
-    <ul class="social-links">
-      <li><a href="https://www.linkedin.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"></a></li>
-      <li><a href="https://github.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"></a></li>
-      <li><a href="https://scholar.google.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlescholar.svg"></a></li>
-    </ul>
-
-    <div class="theme-toggle" id="themeToggle">
-      <i class="bi bi-brightness-high"></i>
+    <div class="social">
+      <a href="https://www.linkedin.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"></a>
+      <a href="https://github.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg"></a>
+      <a href="https://scholar.google.com/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlescholar.svg"></a>
     </div>
+    <div class="theme-toggle" id="themeToggle"><i class="bi bi-brightness-high"></i></div>
   </div>
 
-  <!-- ========== FIXED HERO IMAGES ========== -->
-  <header class="hero-fixed">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+  <!-- ========== FIXED HERO (Right) ========== -->
+  <header class="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4200">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="/assets/hero/hero1.jpeg" alt="Hero 1">
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/hero/hero2.jpeg" alt="Hero 2">
-        </div>
-        <div class="carousel-item">
-          <img src="/assets/hero/hero3.jpeg" alt="Hero 3">
+        <div class="carousel-item active"><img src="/assets/hero/hero1.jpeg" alt="Hero1"></div>
+        <div class="carousel-item"><img src="/assets/hero/hero2.jpeg" alt="Hero2"></div>
+        <div class="carousel-item"><img src="/assets/hero/hero3.jpeg" alt="Hero3"></div>
+      </div>
+    </div>
+    <!-- Text overlay -->
+    <div class="hero-caption">
+      <div class="caption-box animate__animated animate__fadeInUp">
+        <h1>Lakmali Nadeesha</h1>
+        <p>PhD Researcher • Computer Vision & Medical Imaging</p>
+        <p>Active Learning • Foundation Models • Generative Modeling</p>
+        <div>
+          <span class="badge-pill">Active Learning</span>
+          <span class="badge-pill">Pathology WSI</span>
+          <span class="badge-pill">Diffusion</span>
+          <span class="badge-pill">SAM-Path / UNI</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ========== MAIN CONTENT AREA ========== -->
-  <div class="site-main">
-    <!-- About -->
-    <section id="about_me">
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="main">
+    <section id="about">
       <h2 class="section-title">About Me</h2>
-      <p>
-        I’m a PhD candidate in <strong>Electrical and Computer Engineering</strong> at the <strong>University of Kentucky</strong>,
-        specializing in <strong>Computer Vision</strong> and <strong>Medical Image Analysis</strong>. My research focuses on
-        <strong>data-efficient learning</strong> for medical image segmentation — integrating
-        <em>Active Learning</em>, <em>foundation model adaptation</em>, and <em>mask-conditioned diffusion</em>.
-      </p>
-      <p>
-        I have presented my work <strong>“A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation”</strong>
-        at <strong>IEEE ICIP 2025</strong>, introducing a hybrid clustering-based active learning framework that addresses cold-start challenges.
-      </p>
-      <p>
-        I also bring industry research experience as a <strong>two-time Amazon Applied Scientist Intern</strong> — one focusing on
-        <em>Active Learning for Multi-Modal Classification</em> and another on
-        <em>Generative Virtual Try-On</em> with automated quality evaluation.
-      </p>
+      <p>I’m a PhD candidate in <strong>Electrical and Computer Engineering</strong> at the University of Kentucky, specializing in <strong>Computer Vision</strong> and <strong>Medical Image Analysis</strong>. My research focuses on data-efficient segmentation through <em>Active Learning</em>, <em>foundation model adaptation</em> (SAM-Path, UNI), and <em>mask-conditioned diffusion</em> for pathology and dermoscopy.</p>
+      <p>I presented <strong>“A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation”</strong> at IEEE ICIP 2025, introducing a hybrid clustering-based active learning framework that addresses cold-start challenges.</p>
+      <p>I’ve also served as a <strong>two-time Amazon Applied Scientist Intern</strong>: (1) Active Learning for Multi-Modal Theme Recognition, and (2) Generative Virtual Try-On with demographic-aware model selection, a refiner network, and automated quality evaluation.</p>
     </section>
 
-    <!-- Recent News -->
     <section id="news">
       <h2 class="section-title">Recent News</h2>
 
       <div class="news-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="news-title"><strong>ICIP 2025 Paper Accepted!</strong></div>
-          <span class="date-badge">Sep 2025</span>
-        </div>
-        <p class="accepted-text">Presented our TAIAL framework at IEEE ICIP 2025, Alaska.</p>
+        <div class="d-flex justify-content-between"><div class="news-title">ICIP 2025 Paper Accepted 🎉</div><span class="date-badge">Sep 2025</span></div>
+        <p class="accepted-text">Presented TAIAL framework at IEEE ICIP 2025 (Alaska).</p>
       </div>
 
       <div class="news-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="news-title"><strong>Amazon Internship (Generative Modeling)</strong></div>
-          <span class="date-badge">Summer 2025</span>
-        </div>
-        <p class="accepted-text">Developed demographic-aware generative virtual try-on with refiner module and automatic evaluation.</p>
+        <div class="d-flex justify-content-between"><div class="news-title">Amazon Internship – Generative Virtual Try-On</div><span class="date-badge">Summer 2025</span></div>
+        <p class="accepted-text">Built demographic-aware VTON pipeline with refiner + auto evaluation.</p>
       </div>
 
       <div class="news-card">
-        <div class="d-flex justify-content-between align-items-start">
-          <div class="news-title"><strong>Amazon Internship (Active Learning)</strong></div>
-          <span class="date-badge">Summer 2024</span>
-        </div>
-        <p class="accepted-text">Implemented multi-modal active learning pipeline for theme identification.</p>
+        <div class="d-flex justify-content-between"><div class="news-title">Amazon Internship – Active Learning for Theme Recognition</div><span class="date-badge">Summer 2024</span></div>
+        <p class="accepted-text">Designed multi-modal AL strategy for product theme classification.</p>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <h2 class="section-title">Contact</h2>
       <div class="card-bg">
         <p>Email: <a href="mailto:lakmali.nadeesha@uky.edu">lakmali.nadeesha@uky.edu</a></p>
         <p>Lexington, KY, USA</p>
-        <div class="d-flex gap-2 flex-wrap">
+        <div class="d-flex gap-2 flex-wrap mt-2">
           <a class="btn btn-outline-light btn-sm" href="https://github.com/" target="_blank">GitHub</a>
-          <a class="btn btn-outline-light btn-sm" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+          <a class="btn btn-outline-light btn-sm" href="https://linkedin.com/" target="_blank">LinkedIn</a>
           <a class="btn btn-outline-light btn-sm" href="https://scholar.google.com/" target="_blank">Scholar</a>
+          <a class="btn btn-outline-light btn-sm" href="https://youtube.com/" target="_blank">YouTube</a>
         </div>
       </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Lakmali Nadeesha · Built for GitHub Pages
-    </footer>
+    <footer>© <span id="year"></span> Lakmali Nadeesha · Built for GitHub Pages</footer>
   </div>
 
-  <!-- Bootstrap JS -->
+  <!-- ========== JS ========== -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const htmlEl = document.documentElement;
-    const themeKey = 'theme-mode';
-
-    const applyTheme = (mode) => {
-      htmlEl.setAttribute('data-theme', mode);
-      localStorage.setItem(themeKey, mode);
+    // theme toggle
+    const htmlEl=document.documentElement, key='theme-mode';
+    const setTheme=(m)=>{htmlEl.setAttribute('data-theme',m);localStorage.setItem(key,m)};
+    setTheme(localStorage.getItem(key)||'dark');
+    document.getElementById('themeToggle').onclick=()=>{
+      const now=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';
+      setTheme(now);
+      document.getElementById('themeToggle').innerHTML=now==='dark'
+        ?'<i class="bi bi-brightness-high"></i>':'<i class="bi bi-moon"></i>';
     };
-
-    const current = localStorage.getItem(themeKey) || 'dark';
-    applyTheme(current);
-
-    themeToggle.addEventListener('click', () => {
-      const newMode = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      applyTheme(newMode);
-      themeToggle.innerHTML = newMode === 'dark'
-        ? '<i class="bi bi-brightness-high"></i>'
-        : '<i class="bi bi-moon"></i>';
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
