@@ -28,20 +28,19 @@
     [data-theme="light"]{--bg:#ffffff;--bg2:#f5f7fb;--card:#ffffff;--text:#0f172a;--muted:#4b5563;--ring:#2563eb;--brand:#3b82f6;--link:#1d4ed8}
     html,body{background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
     a{color:var(--link)} a:hover{text-decoration:underline}
-
     /* Navbar */
     .navbar{backdrop-filter:blur(10px);background-color:rgba(10,14,25,.6) !important;border-bottom:1px solid rgba(255,255,255,.06)}
     .navbar-brand{font-weight:800;letter-spacing:.3px}
     .btn-soft{border:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.04));color:var(--text)}
     .btn-soft:hover{border-color:var(--ring);box-shadow:0 0 0 3px rgba(110,168,254,.35)}
 
-    /*  Swiper */
+    /* Hero Swiper */
     .hero{position:relative}
     .hero .swiper{width:100%;height:100vh}
     .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.65))}
     .hero .caption{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);text-align:center;max-width:1100px;padding:0 16px}
     .hero h1{font-size:clamp(28px,3.8vw,56px);margin-bottom:8px}
-    .hero p{font-size:clamp(16px,1.4vw,20px)}
+    .hero p{color:#e5e7eb;font-size:clamp(16px,1.4vw,20px)}
     .badge-pill{border-radius:999px;padding:.4rem .7rem;border:1px solid rgba(255,255,255,.2);font-size:.85rem;margin:.15rem}
 
     /* Sections */
@@ -63,39 +62,6 @@
 
     /* Footer */
     footer{padding:50px 0;color:var(--muted)}
-
-    /* ---------- READABLE CAPTION CARD + STACKING FIX ---------- */
-    /* Ensure caption sits above slides and overlay */
-    .hero .swiper            { position: relative; z-index: 1; }
-    .hero .overlay           { position: absolute; inset: 0; z-index: 2; }
-    .hero .caption           { position: absolute; z-index: 3; }
-
-    /* White translucent card for readable black text on any image */
-    .caption-inner{
-      display:inline-block;
-      background: rgba(255,255,255,0.92);
-      color:#0f172a;                    /* dark text inside */
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border:1px solid rgba(0,0,0,0.06);
-      border-radius:16px;
-      padding:18px 22px;
-      box-shadow: 0 10px 40px rgba(0,0,0,.28);
-      max-width: min(92vw, 900px);
-    }
-    .hero .caption h1,
-    .hero .caption p{
-      color:#0f172a !important;
-      text-shadow:none !important;
-    }
-    .caption-inner .badge-pill{
-      background:#ffffff;
-      color:#0f172a;
-      border-color: rgba(0,0,0,0.18);
-    }
-    @media (min-width: 768px){
-      .caption-divider{height:1px; background:rgba(0,0,0,0.08); margin:8px 0 10px;}
-    }
   </style>
 </head>
 <body>
@@ -129,13 +95,13 @@
     <div class="swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="/assets/hero/hero_new1.jpeg" class="w-100 h-100 object-fit-cover" alt="WSI montage" />
+          <img src="/assets/hero/hero1.jpeg" class="w-100 h-100 object-fit-cover" alt="WSI montage" />
         </div>
         <div class="swiper-slide">
-          <img src="/assets/hero/hero_new2.jpeg" class="w-100 h-100 object-fit-cover" alt="Segmentation overlays" />
+          <img src="/assets/hero/hero2.jpeg" class="w-100 h-100 object-fit-cover" alt="Segmentation overlays" />
         </div>
         <div class="swiper-slide">
-          <img src="/assets/hero/hero_new3.jpeg" class="w-100 h-100 object-fit-cover" alt="Conference photo" />
+          <img src="/assets/hero/hero3.jpeg" class="w-100 h-100 object-fit-cover" alt="Conference photo" />
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -143,22 +109,14 @@
       <div class="swiper-button-next"></div>
     </div>
     <div class="overlay"></div>
-
-    <!-- UPDATED CAPTION: wrapped in a readable white card -->
     <div class="caption">
-      <div class="caption-inner">
-        <h1 class="animate__animated animate__fadeInUp mb-2">Lakmali Nadeesha</h1>
-        <div class="caption-divider"></div>
-        <p class="animate__animated animate__fadeInUp animate__delay-1s mb-2">
-          <strong>PhD Researcher</strong> • <strong>Computer Vision &amp; Medical Imaging</strong> •
-          <strong>Active Learning</strong> • <strong>Foundation Models</strong> • <strong>Generative Modeling</strong>
-        </p>
-        <div class="mt-2">
-          <span class="badge-pill">Active Learning</span>
-          <span class="badge-pill">Pathology WSI</span>
-          <span class="badge-pill">Diffusion</span>
-          <span class="badge-pill">SAM-Path / UNI</span>
-        </div>
+      <h1 class="animate__animated animate__fadeInUp">Lakmali Nadeesha</h1>
+      <p class="animate__animated animate__fadeInUp animate__delay-1s">PhD Researcher • Computer Vision & Medical Imaging • Active Learning • Foundation Models • Generative Modeling</p>
+      <div class="mt-3">
+        <span class="badge-pill">Active Learning</span>
+        <span class="badge-pill">Pathology WSI</span>
+        <span class="badge-pill">Diffusion</span>
+        <span class="badge-pill">SAM‑Path / UNI</span>
       </div>
     </div>
   </header>
@@ -173,8 +131,8 @@
           </div>
           <div class="col-lg-8" data-aos="fade-left">
             <h2 class="section-title">About</h2>
-            <p class="lead">I’m a PhD candidate in <strong>Electrical & Computer Engineering</strong> at the University of Kentucky, specializing in <strong>computer vision</strong> and <strong>medical imaging</strong>. My work centers on <strong>data-efficient segmentation</strong>—combining <em>Active Learning</em>, <em>foundation-model adaptation</em> (SAM-Path, UNI), and <em>mask-conditioned diffusion</em> for pathology whole-slide images and dermoscopy.</p>
-            <p>Recent highlights include <strong>TAIAL</strong> with <strong>Adaptive GMM</strong> for early-stage sample selection (ICIP 2025), and two Amazon Applied Scientist internships: (1) <strong>multi-modal, multi-class theme recognition</strong> with active learning; and (2) a <strong>generative virtual try-on</strong> pipeline featuring demographic-aware model selection, a garment-fidelity <strong>refiner</strong>, and a fully automated <strong>quality evaluation</strong> module. I enjoy building robust, scalable training on DGX/HPC clusters and collaborating on problems where smarter data usage reduces labeling cost. I’m always open to new ideas and research collaborations.</p>
+            <p class="lead">I’m a PhD candidate in <strong>Electrical & Computer Engineering</strong> at the University of Kentucky, specializing in <strong>computer vision</strong> and <strong>medical imaging</strong>. My work centers on <strong>data‑efficient segmentation</strong>—combining <em>Active Learning</em>, <em>foundation‑model adaptation</em> (SAM‑Path, UNI), and <em>mask‑conditioned diffusion</em> for pathology whole‑slide images and dermoscopy.</p>
+<p>Recent highlights include <strong>TAIAL</strong> with <strong>Adaptive GMM</strong> for early‑stage sample selection (ICIP 2025), and two Amazon Applied Scientist internships: (1) <strong>multi‑modal, multi‑class theme recognition</strong> with active learning; and (2) a <strong>generative virtual try‑on</strong> pipeline featuring demographic‑aware model selection, a garment‑fidelity <strong>refiner</strong>, and a fully automated <strong>quality evaluation</strong> module. I enjoy building robust, scalable training on DGX/HPC clusters and collaborating on problems where smarter data usage reduces labeling cost. I’m always open to new ideas and research collaborations.</p>
             <div class="d-flex gap-2 flex-wrap mt-3">
               <a class="btn btn-soft" href="https://scholar.google.com/" target="_blank">🎓 Google Scholar</a>
               <a class="btn btn-soft" href="https://github.com/YOUR-USERNAME" target="_blank">💻 GitHub</a>
@@ -195,7 +153,7 @@
             <div class="p-4 card-bg h-100">
               <div class="text-uppercase small text-muted">Conference</div>
               <h3 class="h4 mt-1">ICIP 2025 — TAIAL / Adaptive GMM for Skin Lesion Segmentation</h3>
-              <p class="mb-2">Lakmali Nadeesha Kumari, Chanaka T. Bandara, Chen-Nee Chuah, Sen-Ching S. Cheung. <span class="text-muted">pp. 2247–2252, IEEE — Sep 14, 2025</span></p>
+              <p class="mb-2">Lakmali Nadeesha Kumari, Chanaka T. Bandara, Chen‑Nee Chuah, Sen‑Ching S. Cheung. <span class="text-muted">pp. 2247–2252, IEEE — Sep 14, 2025</span></p>
               <div class="d-flex gap-2 flex-wrap">
                 <a class="btn btn-soft" href="#">PDF</a>
                 <a class="btn btn-soft" href="#">arXiv</a>
@@ -211,8 +169,8 @@
               <div class="text-uppercase small text-muted">Industry</div>
               <h3 class="h4 mt-1">Amazon Applied Scientist Internships</h3>
               <ul class="mb-2">
-                <li><strong>Theme Recognition</strong>: Active learning for multi-modal, multi-class classification.</li>
-                <li><strong>Virtual Try-On</strong>: Demographic-aware model selection + garment refiner + automated quality evaluation.</li>
+                <li><strong>Theme Recognition</strong>: Active learning for multi‑modal, multi‑class classification.</li>
+                <li><strong>Virtual Try‑On</strong>: Demographic‑aware model selection + garment refiner + automated quality evaluation.</li>
               </ul>
               <div class="ratio ratio-16x9 rounded-3 overflow-hidden border">
                 <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="Industry reel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -237,7 +195,7 @@
                 </div>
                 <span class="badge rounded-pill text-bg-primary">ICIP 2025</span>
               </div>
-              <p class="mb-2 mt-2">TAIAL couples self-supervised initialization with clustering + entropy ranking on a progressively refined feature space, balancing diversity, informativeness, and uncertainty for early-stage selection (ISIC17).</p>
+              <p class="mb-2 mt-2">TAIAL couples self‑supervised initialization with clustering + entropy ranking on a progressively refined feature space, balancing diversity, informativeness, and uncertainty for early‑stage selection (ISIC17).</p>
               <div class="links">
                 <a href="#" class="btn btn-sm btn-soft">PDF</a>
                 <a href="#" class="btn btn-sm btn-soft">arXiv</a>
@@ -258,9 +216,9 @@
         <h2 class="section-title" data-aos="fade-up">Projects</h2>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" data-aos="fade-up">
           <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#p1" type="button" role="tab">Generative AL</button></li>
-          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p2" type="button" role="tab">Virtual Try-On</button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p2" type="button" role="tab">Virtual Try‑On</button></li>
           <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p3" type="button" role="tab">Theme Recognition</button></li>
-          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p4" type="button" role="tab">SAM-Path + UNI</button></li>
+          <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#p4" type="button" role="tab">SAM‑Path + UNI</button></li>
         </ul>
         <div class="tab-content" data-aos="fade-up">
           <div class="tab-pane fade show active" id="p1" role="tabpanel">
@@ -270,7 +228,7 @@
               </div>
               <div class="col-lg-4">
                 <div class="p-3 card-bg h-100">
-                  <h3 class="h5">Mask-Conditioned Diffusion @ 1024×1024</h3>
+                  <h3 class="h5">Mask‑Conditioned Diffusion @ 1024×1024</h3>
                   <p>Realistic pathology patch synthesis conditioned on masks; evaluates domain fidelity and sample efficiency; automated quality metrics and ablations.</p>
                   <div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Code</a><a class="btn btn-soft" href="#">Blog</a><a class="btn btn-soft" href="#">Dataset</a></div>
                 </div>
@@ -282,8 +240,8 @@
               <div class="col-lg-6"><a href="/assets/media/vton_grid.jpg" class="glightbox" data-gallery="vton"><img src="/assets/media/vton_grid.jpg" class="img-fluid rounded-4 border" alt="VTON grid"/></a></div>
               <div class="col-lg-6">
                 <div class="p-3 card-bg h-100">
-                  <h3 class="h5">Demographic-Aware Auto Model Selection</h3>
-                  <p>End-to-end pipeline: on-model generation, selector, refiner for garment fidelity, and automated quality evaluation.</p>
+                  <h3 class="h5">Demographic‑Aware Auto Model Selection</h3>
+                  <p>End‑to‑end pipeline: on‑model generation, selector, refiner for garment fidelity, and automated quality evaluation.</p>
                   <div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Tech report</a><a class="btn btn-soft" href="#">Slides</a></div>
                 </div>
               </div>
@@ -293,7 +251,7 @@
             <div class="row g-3">
               <div class="col-lg-7"><img src="/assets/media/theme_id.jpg" class="img-fluid rounded-4 border" alt="Theme ID"/></div>
               <div class="col-lg-5">
-                <div class="p-3 card-bg h-100"><h3 class="h5">Active Learning for Multi-Modal, Multi-Class Theme Recognition</h3><p>Pool-based querying and uncertainty-aware labeling to accelerate coverage and reduce costs in large catalogs.</p><div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Overview</a><a class="btn btn-soft" href="#">Poster</a></div></div>
+                <div class="p-3 card-bg h-100"><h3 class="h5">Active Learning for Multi‑Modal, Multi‑Class Theme Recognition</h3><p>Pool‑based querying and uncertainty‑aware labeling to accelerate coverage and reduce costs in large catalogs.</p><div class="d-flex gap-2 flex-wrap"><a class="btn btn-soft" href="#">Overview</a><a class="btn btn-soft" href="#">Poster</a></div></div>
               </div>
             </div>
           </div>
@@ -373,13 +331,7 @@
     document.getElementById('themeToggle').addEventListener('click',()=>{const m=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark'; localStorage.setItem(themeKey,m); applyTheme(m)});
 
     // Swiper hero
-    const swiper=new Swiper('.swiper',{
-      loop:true,
-      autoplay:{delay:4000, disableOnInteraction:false},
-      effect:'fade',
-      pagination:{el:'.swiper-pagination', clickable:true},
-      navigation:{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}
-    });
+    const swiper=new Swiper('.swiper',{loop:true, autoplay:{delay:4000, disableOnInteraction:false}, effect:'fade', pagination:{el:'.swiper-pagination', clickable:true}, navigation:{nextEl:'.swiper-button-next', prevEl:'.swiper-button-prev'}});
 
     // GLightbox
     const lightbox=GLightbox({touchNavigation:true, loop:true});
@@ -388,14 +340,7 @@
     AOS.init({once:true, duration:700, offset:50});
 
     // Copy BibTeX helper
-    function copyBib(id, el){
-      const tpl=document.getElementById(id); if(!tpl) return;
-      const txt=tpl.innerHTML.trim();
-      navigator.clipboard.writeText(txt).then(()=>{
-        el.textContent='Copied ✓';
-        setTimeout(()=>el.textContent='Copy BibTeX',1500);
-      });
-    }
+    function copyBib(id, el){const tpl=document.getElementById(id); if(!tpl) return; const txt=tpl.innerHTML.trim(); navigator.clipboard.writeText(txt).then(()=>{el.textContent='Copied ✓'; setTimeout(()=>el.textContent='Copy BibTeX',1500)});}
     window.copyBib=copyBib;
 
     // Year
@@ -405,7 +350,7 @@
   <!-- Quick Setup Notes:
     1) Create folders and upload assets:
        /assets/portrait.jpg
-       /assets/hero/{hero1.jpeg,hero2.jpeg,hero3.jpeg}
+       /assets/hero/{hero1.jpg,hero2.jpg,hero3.jpg}
        /assets/media/{poster_icip.jpg,award.jpg,vton_grid.jpg,sam_uni_1.jpg,sam_uni_2.jpg,theme_id.jpg,video_cover_2.jpg}
     2) Replace VIDEO_ID* with your YouTube IDs.
     3) Replace profile links and add real PDF/arXiv URLs.
@@ -414,5 +359,4 @@
   -->
 </body>
 </html>
-
 
