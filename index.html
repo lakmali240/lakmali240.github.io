@@ -21,10 +21,8 @@
       --border: rgba(255,255,255,0.08);
       --card-bg: rgba(255,255,255,0.05);
       --card-hover: rgba(255,255,255,0.08);
-
       --sidebar-glass: rgba(255, 255, 255, 0.06);
       --sidebar-line:  rgba(255, 255, 255, 0.22);
-
       --gradient: linear-gradient(90deg,#0066ff 0%,#00c6ff 100%);
     }
     [data-theme="light"] {
@@ -36,10 +34,8 @@
       --border:rgba(0,0,0,0.08);
       --card-bg:#ffffffd8;
       --card-hover:#f0f2f5;
-
       --sidebar-glass: rgba(255,255,255,0.92);
       --sidebar-line:  rgba(0,0,0,0.08);
-
       --gradient:linear-gradient(90deg,#0071ff 0%,#00c6ff 100%);
     }
 
@@ -87,14 +83,8 @@
     }
     .sidebar a.nav-link i { margin-right:8px;font-size:15px; }
     .social {display:flex;justify-content:center;gap:10px;margin-top:18px;}
-    .social a {
-      width:34px;height:34px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;
-      background:var(--card-bg);border:1px solid var(--sidebar-line);
-      color:var(--text);text-decoration:none;font-size:16px;
-      transition:.3s;
-    }
-    .social a:hover {background:var(--gradient);color:#fff;transform:scale(1.1);}
+    .social img {width:26px;height:26px;border-radius:6px;transition:transform .3s;}
+    .social img:hover {transform:scale(1.15);}
     .sidebar-footer {margin-top:auto;padding-top:18px;}
     .theme-toggle {
       width:38px;height:38px;border-radius:50%;cursor:pointer;
@@ -121,8 +111,9 @@
       font-size:clamp(20px,2vw,36px);
       margin-bottom:6px;color:#000;
       white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+      transition:color 0.6s ease;
     }
-    .hero-text p {font-size:14px;color:#222;opacity:.96;font-weight:500;line-height:1.4;}
+    .hero-text p {font-size:14px;color:#222;opacity:.96;font-weight:500;line-height:1.4;transition:color 0.6s ease;}
 
     /* ===== MAIN ===== */
     .main {margin-left:230px;margin-right:30%;position:relative;z-index:5;}
@@ -149,6 +140,29 @@
     }
     .research-tag:hover {border-color:var(--accent);color:var(--accent);}
 
+    /* ===== INTERNSHIP HIGHLIGHT CARDS ===== */
+    .intern-card {
+      background:var(--card-bg);border:1px solid var(--border);
+      border-radius:12px;padding:20px 22px;margin-bottom:14px;transition:.3s;
+      position:relative;overflow:hidden;
+    }
+    .intern-card::before {
+      content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+      background:var(--gradient);
+    }
+    .intern-card:hover {background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15);}
+    .intern-header {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;}
+    .intern-title {font-family:'Poppins';font-weight:700;font-size:15px;}
+    .intern-co {font-size:13px;font-weight:600;color:var(--accent);}
+    .intern-date {font-size:12px;color:var(--text-muted);font-weight:500;}
+    .intern-tags {margin:6px 0 8px;}
+    .intern-tags span {
+      display:inline-block;padding:2px 10px;margin-right:5px;
+      border-radius:12px;font-size:11.5px;font-weight:600;
+      background:rgba(0,102,255,0.12);color:var(--accent);border:1px solid rgba(0,102,255,0.2);
+    }
+    .intern-desc {font-size:14px;line-height:1.65;color:var(--text-muted);}
+
     /* ===== NEWS CARDS ===== */
     .news-card {
       background:var(--card-bg);border:1px solid var(--border);
@@ -162,82 +176,44 @@
     }
     .badge-paper {background:var(--accent2);}
     .badge-intern {background:#2e7d32;}
-    .badge-award {background:#f57c00;}
     .badge-talk {background:#7b1fa2;}
     .date-badge {background:#e1f3e4;color:#1b5e20;border-radius:12px;padding:2px 10px;font-weight:600;font-size:.78rem;}
     [data-theme="dark"] .date-badge {background:rgba(46,125,50,0.2);color:#81c784;}
     .news-desc {margin-top:6px;font-size:14px;color:var(--text-muted);line-height:1.55;}
 
-    /* ===== PUBLICATIONS ===== */
-    .pub-item {
+    /* ===== RESEARCH WITH THUMBNAILS ===== */
+    .research-item {
+      display:grid;grid-template-columns:140px 1fr;gap:18px;
       background:var(--card-bg);border:1px solid var(--border);
-      border-radius:10px;padding:16px 20px;margin-bottom:12px;transition:.3s;
+      border-radius:12px;padding:18px;margin-bottom:14px;transition:.3s;
+      align-items:start;
     }
-    .pub-item:hover {background:var(--card-hover);transform:translateY(-2px);}
-    .pub-title {font-weight:600;font-size:14.5px;line-height:1.5;margin-bottom:4px;}
-    .pub-authors {font-size:13px;color:var(--text-muted);margin-bottom:3px;}
-    .pub-authors strong {color:var(--accent);font-weight:600;}
-    .pub-venue {font-size:13px;font-style:italic;color:var(--text-muted);margin-bottom:6px;}
-    .pub-links a {
+    .research-item:hover {background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.15);}
+    .research-thumb {
+      width:140px;height:95px;border-radius:8px;object-fit:cover;
+      border:1px solid var(--border);background:var(--card-hover);
+    }
+    .research-thumb-placeholder {
+      width:140px;height:95px;border-radius:8px;
+      border:1px solid var(--border);background:var(--card-hover);
+      display:flex;align-items:center;justify-content:center;
+      font-size:28px;color:var(--text-muted);opacity:.5;
+    }
+    .research-info .pub-title {font-weight:600;font-size:14.5px;line-height:1.5;margin-bottom:4px;}
+    .research-info .pub-authors {font-size:13px;color:var(--text-muted);margin-bottom:3px;}
+    .research-info .pub-authors strong {color:var(--accent);font-weight:600;}
+    .research-info .pub-venue {font-size:13px;font-style:italic;color:var(--text-muted);margin-bottom:6px;}
+    .research-info .pub-links a {
       display:inline-block;padding:3px 10px;margin-right:6px;margin-top:2px;
       border:1px solid var(--border);border-radius:5px;font-size:12px;font-weight:600;
       color:var(--accent);text-decoration:none;transition:.2s;
     }
-    .pub-links a:hover {background:var(--accent);color:#fff;border-color:var(--accent);}
+    .research-info .pub-links a:hover {background:var(--accent);color:#fff;border-color:var(--accent);}
     .pub-section-label {
       font-family:'Poppins';font-weight:600;font-size:15px;
       margin:22px 0 10px;padding-bottom:6px;
       border-bottom:1px solid var(--border);
     }
-
-    /* ===== EXPERIENCE ===== */
-    .exp-item {
-      background:var(--card-bg);border:1px solid var(--border);
-      border-radius:10px;padding:18px 20px;margin-bottom:12px;transition:.3s;
-      position:relative;
-    }
-    .exp-item:hover {background:var(--card-hover);}
-    .exp-header {display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:6px;}
-    .exp-org {font-family:'Poppins';font-weight:600;font-size:15px;}
-    .exp-org a {color:var(--text);text-decoration:none;}
-    .exp-org a:hover {color:var(--accent);}
-    .exp-date {font-size:13px;color:var(--text-muted);font-weight:500;white-space:nowrap;}
-    .exp-role {font-size:14px;font-weight:600;color:var(--accent);margin:4px 0 2px;}
-    .exp-tags {font-size:12px;color:var(--text-muted);font-style:italic;margin-bottom:8px;}
-    .exp-bullets {padding-left:18px;margin:0;}
-    .exp-bullets li {font-size:13.5px;margin-bottom:5px;line-height:1.55;}
-
-    /* ===== EDUCATION ===== */
-    .edu-item {
-      display:flex;gap:16px;align-items:flex-start;
-      padding:14px 0;border-bottom:1px solid var(--border);
-    }
-    .edu-item:last-child {border-bottom:none;}
-    .edu-year {
-      min-width:100px;padding:4px 12px;
-      background:var(--card-bg);border:1px solid var(--border);
-      border-radius:6px;font-size:13px;font-weight:600;text-align:center;
-      color:var(--accent);
-    }
-    .edu-details strong {font-size:14.5px;}
-    .edu-details p {font-size:13px;color:var(--text-muted);margin:2px 0 0;}
-
-    /* ===== SKILLS ===== */
-    .skill-group {margin-bottom:14px;}
-    .skill-group-label {font-family:'Poppins';font-weight:600;font-size:14px;margin-bottom:6px;color:var(--accent);}
-    .skill-tag {
-      display:inline-block;padding:4px 12px;margin:3px 4px;
-      border-radius:6px;font-size:13px;font-weight:500;
-      background:var(--card-bg);border:1px solid var(--border);
-    }
-
-    /* ===== EXTRACURRICULAR ===== */
-    .extra-item {
-      display:flex;justify-content:space-between;align-items:baseline;
-      padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;
-    }
-    .extra-item:last-child {border-bottom:none;}
-    .extra-year {font-size:13px;color:var(--text-muted);white-space:nowrap;margin-left:12px;}
 
     /* ===== CONTACT ===== */
     .contact-grid {display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
@@ -252,11 +228,35 @@
 
     footer {text-align:center;padding:30px;opacity:.6;color:var(--text);font-size:13px;}
 
-    /* Scrollbar */
+    /* ===== JOB MARKET BANNER ===== */
+    .job-banner {
+      background:linear-gradient(90deg,#e63946 0%,#ff6b6b 50%,#e63946 100%);
+      background-size:200% 100%;
+      animation:bannerShimmer 3s ease infinite;
+      color:#fff;
+      text-align:center;
+      padding:14px 20px;
+      font-size:15px;
+      font-weight:600;
+      font-family:'Poppins',sans-serif;
+      letter-spacing:0.3px;
+      border-bottom:1px solid var(--border);
+    }
+    .job-banner i {margin-right:8px;font-size:16px;}
+    .job-banner a {
+      color:#fff;text-decoration:underline;text-underline-offset:3px;
+      font-weight:700;margin-left:6px;transition:.2s;
+    }
+    .job-banner a:hover {opacity:.85;}
+    @keyframes bannerShimmer {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+
     .main::-webkit-scrollbar {width:5px;}
     .main::-webkit-scrollbar-thumb {background:var(--accent);border-radius:10px;}
 
-    /* Responsive */
     @media(max-width:1100px){
       .hero {display:none;}
       .main {margin-right:0;}
@@ -265,6 +265,8 @@
       .sidebar {display:none;}
       .main {margin-left:0;}
       .contact-grid {grid-template-columns:1fr;}
+      .research-item {grid-template-columns:1fr;}
+      .research-thumb, .research-thumb-placeholder {width:100%;height:140px;}
     }
   </style>
 </head>
@@ -277,19 +279,20 @@
     <ul>
       <li><a href="#about" class="nav-link active" onclick="scrollToSection('about')"><i class="bi bi-person"></i>About</a></li>
       <li><a href="#news" class="nav-link" onclick="scrollToSection('news')"><i class="bi bi-megaphone"></i>News</a></li>
-      <li><a href="#publications" class="nav-link" onclick="scrollToSection('publications')"><i class="bi bi-journal-text"></i>Publications</a></li>
-      <li><a href="#experience" class="nav-link" onclick="scrollToSection('experience')"><i class="bi bi-briefcase"></i>Experience</a></li>
-      <li><a href="#education" class="nav-link" onclick="scrollToSection('education')"><i class="bi bi-mortarboard"></i>Education</a></li>
-      <li><a href="#skills" class="nav-link" onclick="scrollToSection('skills')"><i class="bi bi-tools"></i>Skills</a></li>
-      <li><a href="#activities" class="nav-link" onclick="scrollToSection('activities')"><i class="bi bi-trophy"></i>Activities</a></li>
+      <li><a href="#research" class="nav-link" onclick="scrollToSection('research')"><i class="bi bi-journal-text"></i>Research</a></li>
       <li><a href="#contact" class="nav-link" onclick="scrollToSection('contact')"><i class="bi bi-envelope"></i>Contact</a></li>
       <li><a href="/assets/Lakmali_Nadeesha_CV.pdf" target="_blank" class="nav-link"><i class="bi bi-file-earmark-pdf"></i>CV</a></li>
     </ul>
     <div class="social">
-      <a href="https://www.linkedin.com/in/lnadeeshak/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/lakmali240" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-      <a href="https://scholar.google.com/" target="_blank" aria-label="Google Scholar"><i class="bi bi-mortarboard-fill"></i></a>
-      <a href="mailto:lakmali.nadeesha@uky.edu" aria-label="Email"><i class="bi bi-envelope-fill"></i></a>
+      <a href="https://www.linkedin.com/in/lnadeeshak/" target="_blank" aria-label="LinkedIn">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/lakmali240" target="_blank" aria-label="GitHub">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+      </a>
+      <a href="https://scholar.google.com/" target="_blank" aria-label="Google Scholar">
+        <img src="/assets/hero/Google_Scholar_logo.svg.png" alt="Google Scholar">
+      </a>
     </div>
     <div class="sidebar-footer">
       <div class="theme-toggle" id="themeToggle"><i class="bi bi-brightness-high"></i></div>
@@ -310,9 +313,11 @@
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
       </button>
     </div>
     <div class="hero-text">
@@ -325,6 +330,11 @@
   <!-- MAIN CONTENT -->
   <div class="main">
 
+    <!-- JOB MARKET BANNER -->
+    <div class="job-banner">
+      <i class="bi bi-briefcase-fill"></i>I am on the Job Market! Feel free to reach out regarding potential opportunities.<a href="mailto:lakmali.nadeesha@uky.edu">Get in touch &rarr;</a>
+    </div>
+
     <!-- ========== ABOUT ========== -->
     <section id="about">
       <h2 class="section-title">About Me</h2>
@@ -336,42 +346,31 @@
           <a href="https://sites.google.com/view/dr-cheung" target="_blank" style="color:var(--accent)">Multimedia Information Analysis Laboratory (MIA Lab)</a>
           under the supervision of
           <a href="https://sites.google.com/view/dr-cheung" target="_blank" style="color:var(--accent)">Dr. Sen-ching Samson Cheung</a>.
-          My research lies at the intersection of <strong>Computer Vision</strong>, <strong>Medical Image Analysis</strong>,
-          and <strong>Generative AI</strong>, with a focus on building efficient, label-aware learning systems for
-          high-stakes visual domains.
+          My doctoral research centers on <strong>data-efficient and cost-effective strategies for robust machine learning across diverse modalities</strong>&mdash;spanning
+          medical imaging, computational pathology, dermoscopy, and large-scale product data. I develop active learning,
+          self-supervised, and foundation model-based approaches that reduce annotation cost while maintaining strong
+          performance in challenging settings such as severe class imbalance, limited labeled data, and gigapixel-scale inputs.
         </p>
         <p>
-          My work spans three core themes:
-        </p>
-        <ol style="font-size:15px;padding-left:1.6em;line-height:1.8;margin-bottom:14px;">
-          <li style="margin-bottom:8px;">
-            <strong>Active Learning &amp; Annotation Efficiency:</strong>
-            Designing self-supervised active learning frameworks that combine adaptive Gaussian Mixture Models with
-            foundation models to achieve competitive medical image segmentation while significantly reducing annotation cost.
-          </li>
-          <li style="margin-bottom:8px;">
-            <strong>Class-Imbalanced Segmentation:</strong>
-            Developing difficulty-aware segmentation pipelines for gigapixel whole-slide histopathology images,
-            enabling class-specific focal attention under severe class imbalance without auxiliary estimators.
-          </li>
-          <li style="margin-bottom:8px;">
-            <strong>Generative AI for Product Visualization:</strong>
-            Building end-to-end generative pipelines leveraging diffusion models, LoRA-based refinement,
-            and LLM-driven quality evaluation for automated, context-aware product imagery at scale.
-          </li>
-        </ol>
-        <p>
-          I have served as a <strong>two-time Amazon Applied Scientist Intern</strong>, developing production-scale
-          multi-modal classification systems and generative AI pipelines for Merch on Demand. Prior to my PhD,
-          I spent 3+ years as an <strong>Applications Engineer II at Synopsys</strong>, working on static verification
-          solutions for RTL design.
+          I have served as a <strong>two-time Applied Scientist Intern at Amazon</strong> (Merch on Demand, Seattle, WA),
+          where I delivered production-level machine learning systems across two consecutive summers. Being invited back
+          as a return intern reflects the impact of my first engagement, where I designed a multi-modal classification pipeline
+          that significantly outperformed existing baselines. During my second internship, I built an end-to-end generative AI system
+          that combined diffusion models, LoRA-based fine-tuning, and LLM-driven quality evaluation for automated product
+          visualization&mdash;deployed on multi-GPU cloud infrastructure via AWS. These experiences deepened my expertise
+          in shipping scalable ML systems beyond academic prototypes.
         </p>
         <p>
+          Prior to my Ph.D., I spent over three years as an <strong>Applications Engineer II at
+          <a href="https://www.synopsys.com/" target="_blank" style="color:var(--accent)">Synopsys</a></strong>,
+          where I served as a component owner on the SpyGlass Analyzer team and validated industry-leading
+          static verification, clock domain crossing, and design constraint solutions for RTL design.
           I received my B.Sc. in Electrical and Electronic Engineering from the
           <a href="https://www.pdn.ac.lk/" target="_blank" style="color:var(--accent)">University of Peradeniya</a>, Sri Lanka
           (Washington Accord accredited program).
         </p>
       </div>
+
       <div class="research-areas">
         <h4>Research Interests</h4>
         <span class="research-tag">Computer Vision</span>
@@ -383,6 +382,54 @@
         <span class="research-tag">Multi-Modal Learning</span>
         <span class="research-tag">Deep Learning</span>
         <span class="research-tag">Data Mining</span>
+      </div>
+
+      <!-- Industry Highlights -->
+      <h4 style="font-family:'Poppins';font-weight:600;font-size:15px;margin:28px 0 14px;color:var(--text);">Industry Experience</h4>
+
+      <div class="intern-card">
+        <div class="intern-header">
+          <div>
+            <div class="intern-title">Applied Scientist Intern &mdash; Generative AI Pipeline</div>
+            <div class="intern-co">Amazon &middot; Merch on Demand, Seattle, WA</div>
+          </div>
+          <div class="intern-date">May 2025 &ndash; Aug 2025</div>
+        </div>
+        <div class="intern-tags">
+          <span>Diffusion Models</span>
+          <span>LoRA / PEFT</span>
+          <span>LLM Evaluation</span>
+          <span>Multi-GPU</span>
+          <span>AWS</span>
+        </div>
+        <div class="intern-desc">
+          Designed and shipped an end-to-end generative AI pipeline for automated, context-aware product visualization.
+          The system leveraged diffusion models for image generation, LoRA-based refinement for style consistency,
+          and LLM-based quality evaluation for automated output scoring&mdash;deployed on multi-GPU cloud infrastructure via AWS SageMaker.
+        </div>
+      </div>
+
+      <div class="intern-card">
+        <div class="intern-header">
+          <div>
+            <div class="intern-title">Applied Scientist Intern &mdash; Multi-Modal Classification</div>
+            <div class="intern-co">Amazon &middot; Merch on Demand, Seattle, WA</div>
+          </div>
+          <div class="intern-date">Jun 2024 &ndash; Aug 2024</div>
+        </div>
+        <div class="intern-tags">
+          <span>Multi-Modal</span>
+          <span>Active Learning</span>
+          <span>LLM Labeling</span>
+          <span>CLIP</span>
+          <span>Classification</span>
+        </div>
+        <div class="intern-desc">
+          Built a multi-modal, multi-label classification system integrating image and text features with an automated
+          active learning framework and LLM-based pseudo-labeling to categorize large-scale product data.
+          The system significantly outperformed keyword-based baselines in theme recognition accuracy and was adopted
+          for production use.
+        </div>
       </div>
     </section>
 
@@ -403,7 +450,7 @@
           <div><span class="badge-type badge-intern">Internship</span> <strong>Amazon Applied Scientist Intern (Return)</strong></div>
           <span class="date-badge">Summer 2025</span>
         </div>
-        <p class="news-desc">Returned to Amazon Merch on Demand to design a generative AI pipeline for automated product visualization using diffusion models, LoRA, and LLM-based evaluation.</p>
+        <p class="news-desc">Returned to Amazon Merch on Demand to build a generative AI pipeline for product visualization using diffusion models and LoRA refinement.</p>
       </div>
 
       <div class="news-card">
@@ -419,7 +466,7 @@
           <div><span class="badge-type badge-intern">Internship</span> <strong>Amazon Applied Scientist Intern</strong></div>
           <span class="date-badge">Summer 2024</span>
         </div>
-        <p class="news-desc">Built a multi-modal, multi-label classification system with automated active learning and LLM-based labeling at Amazon Merch on Demand.</p>
+        <p class="news-desc">Built a multi-modal classification system with active learning and LLM labeling at Amazon Merch on Demand, Seattle.</p>
       </div>
 
       <div class="news-card">
@@ -447,280 +494,134 @@
       </div>
     </section>
 
-    <!-- ========== PUBLICATIONS ========== -->
-    <section id="publications">
-      <h2 class="section-title">Publications</h2>
+    <!-- ========== RESEARCH & PUBLICATIONS ========== -->
+    <section id="research">
+      <h2 class="section-title">Research &amp; Publications</h2>
+      <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">
+        Add a thumbnail image for each paper in <code>/assets/research/</code> to visualize your work.
+        If an image is missing, a placeholder icon will appear automatically.
+      </p>
 
       <div class="pub-section-label">Peer-Reviewed Publications</div>
 
-      <div class="pub-item">
-        <div class="pub-title">Learning Class Difficulty in Imbalanced Histopathology Segmentation via Dynamic Focal Attention</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
-        <div class="pub-venue">[Under Review] &mdash; Medical Image Computing and Computer-Assisted Intervention (MICCAI) 2026</div>
-      </div>
-
-      <div class="pub-item">
-        <div class="pub-title">A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, G.A.C.T. Bandara, Sen-ching Cheung</div>
-        <div class="pub-venue">IEEE International Conference on Image Processing (ICIP) 2025</div>
-        <div class="pub-links">
-          <a href="https://ieeexplore.ieee.org/abstract/document/11084666" target="_blank">Paper</a>
+      <!-- Pub 1: MICCAI 2026 -->
+      <div class="research-item">
+        <img src="/assets/research/miccai2026.png" alt="MICCAI 2026" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">Learning Class Difficulty in Imbalanced Histopathology Segmentation via Dynamic Focal Attention</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
+          <div class="pub-venue">[Under Review] &mdash; Medical Image Computing and Computer-Assisted Intervention (MICCAI) 2026</div>
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-title">Efficient Stochastic Parametric Estimation for Lithium-Ion Battery Performance Degradation Tracking and Prognosis</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, P. Wang</div>
-        <div class="pub-venue">Journal of Manufacturing Systems, 2024, Elsevier</div>
-        <div class="pub-links">
-          <a href="https://doi.org/10.1016/j.jmsy.2024.03.017" target="_blank">Paper</a>
+      <!-- Pub 2: ICIP 2025 -->
+      <div class="research-item">
+        <img src="/assets/research/icip2025.png" alt="ICIP 2025" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, G.A.C.T. Bandara, Sen-ching Cheung</div>
+          <div class="pub-venue">IEEE International Conference on Image Processing (ICIP) 2025</div>
+          <div class="pub-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/11084666" target="_blank">Paper</a>
+            <!-- <a href="#" target="_blank">Code</a> -->
+          </div>
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-title">Sylvester Matrix Based Similarity Estimation Method for Automation of Defect Detection in Textile Fabrics</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, G.A.C.T. Bandara, Maheshi B. Dissanayake</div>
-        <div class="pub-venue">Journal of Sensors, vol. 2021, Hindawi</div>
-        <div class="pub-links">
-          <a href="https://www.hindawi.com/journals/js/2021/6625421/" target="_blank">Paper</a>
+      <!-- Pub 3: Elsevier 2024 -->
+      <div class="research-item">
+        <img src="/assets/research/jms2024.png" alt="JMS 2024" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">Efficient Stochastic Parametric Estimation for Lithium-Ion Battery Performance Degradation Tracking and Prognosis</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, P. Wang</div>
+          <div class="pub-venue">Journal of Manufacturing Systems, 2024, Elsevier</div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1016/j.jmsy.2024.03.017" target="_blank">Paper</a>
+          </div>
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-title">Vehicle-Fixed-Frame Adaptive Controller and Intrinsic Nonlinear PID Controller for Attitude Stabilization of a Complex-Shaped Underwater Vehicle</div>
-        <div class="pub-authors">G.A.C.T. Bandara, <strong>R.M.L.N. Kumari</strong>, D.H.S. Maithripala, D.A.A.C. Ratnaweera</div>
-        <div class="pub-venue">Journal of Mechatronics and Robotics, vol. 4, 2020</div>
-        <div class="pub-links">
-          <a href="https://thescipub.com/abstract/10.3844/jmrsp.2020.254.264" target="_blank">Paper</a>
+      <!-- Pub 4: Sensors 2021 -->
+      <div class="research-item">
+        <img src="/assets/research/sensors2021.png" alt="Sensors 2021" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">Sylvester Matrix Based Similarity Estimation Method for Automation of Defect Detection in Textile Fabrics</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, G.A.C.T. Bandara, Maheshi B. Dissanayake</div>
+          <div class="pub-venue">Journal of Sensors, vol. 2021, Hindawi</div>
+          <div class="pub-links">
+            <a href="https://www.hindawi.com/journals/js/2021/6625421/" target="_blank">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pub 5: Mechatronics 2020 -->
+      <div class="research-item">
+        <img src="/assets/research/mechatronics2020.png" alt="Mechatronics 2020" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">Vehicle-Fixed-Frame Adaptive Controller and Intrinsic Nonlinear PID Controller for Attitude Stabilization of a Complex-Shaped Underwater Vehicle</div>
+          <div class="pub-authors">G.A.C.T. Bandara, <strong>R.M.L.N. Kumari</strong>, D.H.S. Maithripala, D.A.A.C. Ratnaweera</div>
+          <div class="pub-venue">Journal of Mechatronics and Robotics, vol. 4, 2020</div>
+          <div class="pub-links">
+            <a href="https://thescipub.com/abstract/10.3844/jmrsp.2020.254.264" target="_blank">Paper</a>
+          </div>
         </div>
       </div>
 
       <div class="pub-section-label">Selected Research Presentations</div>
 
-      <div class="pub-item">
-        <div class="pub-title">SemiSAM_Med: Class-Imbalanced Active Learning in Medical Image Segmentation via Semi-supervised SAM Model with Domain-Adapted Transfer Learning</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
-        <div class="pub-venue">ECE Department Research Symposium, University of Kentucky, 2024</div>
-        <div class="pub-links">
-          <a href="https://drive.google.com/file/d/1AYIqsJOXZnvXSdug8P29pqdEn_m95zhH/view?usp=sharing" target="_blank">Poster</a>
+      <div class="research-item">
+        <img src="/assets/research/semisam2024.png" alt="SemiSAM 2024" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">SemiSAM_Med: Class-Imbalanced Active Learning in Medical Image Segmentation via Semi-supervised SAM Model</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
+          <div class="pub-venue">ECE Department Research Symposium, University of Kentucky, 2024</div>
+          <div class="pub-links">
+            <a href="https://drive.google.com/file/d/1AYIqsJOXZnvXSdug8P29pqdEn_m95zhH/view?usp=sharing" target="_blank">Poster</a>
+          </div>
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-title">Eyes Speak Louder: Computer Vision and Machine Learning Insights into Autism Spectrum Behaviors</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
-        <div class="pub-venue">Commonwealth Computational Summit 2023, University of Kentucky</div>
-        <div class="pub-links">
-          <a href="https://drive.google.com/file/d/1vSHLyPcWEG39gSbqrPy3G9LnLAsm7KfP/view?usp=sharing" target="_blank">Poster</a>
+      <div class="research-item">
+        <img src="/assets/research/asd2023.png" alt="ASD 2023" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">Eyes Speak Louder: Computer Vision and Machine Learning Insights into Autism Spectrum Behaviors</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
+          <div class="pub-venue">Commonwealth Computational Summit 2023, University of Kentucky</div>
+          <div class="pub-links">
+            <a href="https://drive.google.com/file/d/1vSHLyPcWEG39gSbqrPy3G9LnLAsm7KfP/view?usp=sharing" target="_blank">Poster</a>
+          </div>
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-title">Modeling and Prediction of Lithium-Ion Battery Degradation with CINN for Parameter Estimation</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, P. Wang</div>
-        <div class="pub-venue">Engineering Dean's Advisory Council Meeting, 2023</div>
-        <div class="pub-links">
-          <a href="https://drive.google.com/file/d/1EWVs2_3B_YV5oAnTY8gWJubCy5nGuv_V/view?usp=sharing" target="_blank">Poster</a>
+      <div class="research-item">
+        <img src="/assets/research/cinn2023.png" alt="CINN 2023" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">Modeling and Prediction of Lithium-Ion Battery Degradation with CINN for Parameter Estimation</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, P. Wang</div>
+          <div class="pub-venue">Engineering Dean's Advisory Council Meeting, 2023</div>
+          <div class="pub-links">
+            <a href="https://drive.google.com/file/d/1EWVs2_3B_YV5oAnTY8gWJubCy5nGuv_V/view?usp=sharing" target="_blank">Poster</a>
+          </div>
         </div>
       </div>
 
-      <div class="pub-item">
-        <div class="pub-title">SAL-SMIS: Self-Supervised Active Learning for Semi-Supervised Medical Image Segmentation</div>
-        <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
-        <div class="pub-venue">ECE Department Research Symposium, University of Kentucky, 2023</div>
-        <div class="pub-links">
-          <a href="https://drive.google.com/file/d/1xthbtyfiKTPZkMPNKY4-nbohQHtwXeOi/view?usp=sharing" target="_blank">Poster</a>
+      <div class="research-item">
+        <img src="/assets/research/salsmis2023.png" alt="SAL-SMIS 2023" class="research-thumb">
+        <div class="research-info">
+          <div class="pub-title">SAL-SMIS: Self-Supervised Active Learning for Semi-Supervised Medical Image Segmentation</div>
+          <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
+          <div class="pub-venue">ECE Department Research Symposium, University of Kentucky, 2023</div>
+          <div class="pub-links">
+            <a href="https://drive.google.com/file/d/1xthbtyfiKTPZkMPNKY4-nbohQHtwXeOi/view?usp=sharing" target="_blank">Poster</a>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ========== EXPERIENCE ========== -->
-    <section id="experience">
-      <h2 class="section-title">Experience</h2>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org"><a href="https://sites.google.com/view/dr-cheung" target="_blank">Multimedia Information Analysis Laboratory (MIA Lab)</a></div>
-          <div class="exp-date">Aug 2022 &ndash; Present</div>
-        </div>
-        <div class="exp-role">Ph.D. Student / Researcher</div>
-        <div class="exp-tags">AI in Medicine, Machine Learning, Computer Vision, Active Learning, Data Mining</div>
-        <ul class="exp-bullets">
-          <li>Developed foundation model-based segmentation pipelines for gigapixel whole-slide histopathology images under severe class imbalance, achieving difficulty-aware, class-specific segmentation without additional estimators or extra training stages.</li>
-          <li>Utilized advanced computer vision and deep learning techniques to create a feature-extracted dataset for in-depth analysis of gaze behaviors in Autism Spectrum Disorder (ASD), contributing to enhanced early detection and diagnostic capabilities.</li>
-          <li>Designed a Self-Supervised Active Learning framework with Adaptive Gaussian Mixture Models for skin lesion segmentation, reducing annotation effort while maintaining competitive accuracy.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org"><a href="https://merch.amazon.com/landing" target="_blank">Amazon &mdash; Merch on Demand, Seattle, WA</a></div>
-          <div class="exp-date">Jun 2024 &ndash; Aug 2024, May 2025 &ndash; Aug 2025</div>
-        </div>
-        <div class="exp-role">Applied Scientist (Ph.D.) Intern &mdash; Summer 2025</div>
-        <div class="exp-tags">Generative AI, Computer Vision, Deep Learning</div>
-        <ul class="exp-bullets">
-          <li>Designed and implemented an end-to-end generative AI pipeline for automated, context-aware product visualization leveraging diffusion models, LLM-based quality evaluation, and LoRA-based refinement on multi-GPU cloud infrastructure.</li>
-        </ul>
-        <div class="exp-role" style="margin-top:10px;">Applied Scientist (Ph.D.) Intern &mdash; Summer 2024</div>
-        <div class="exp-tags">Multi-Modal Classification, Deep Learning, Computer Vision</div>
-        <ul class="exp-bullets">
-          <li>Built a multi-modal, multi-label classification system with an automated active learning framework and LLM-based labeling to categorize large-scale product data, significantly outperforming keyword-based baselines.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org"><a href="https://manufai.engr.uky.edu/" target="_blank">Augmented Intelligence for Smart Manufacturing (AISM) Lab</a></div>
-          <div class="exp-date">Aug 2021 &ndash; Aug 2022</div>
-        </div>
-        <div class="exp-role">Ph.D. Student / Researcher</div>
-        <div class="exp-tags">Machine Learning, Machine Prognosis, Predictive Maintenance</div>
-        <ul class="exp-bullets">
-          <li>Developed ML framework using Conditional Invertible Neural Network to predict the Remaining Useful Life (RUL) of Lithium-Ion Batteries, incorporating precise battery degradation modeling for predictive maintenance.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org"><a href="https://www.synopsys.com/" target="_blank">Synopsys Sri Lanka</a></div>
-          <div class="exp-date">Apr 2018 &ndash; Aug 2021</div>
-        </div>
-        <div class="exp-role">Applications Engineer II</div>
-        <div class="exp-tags">Linux, Verilog, SystemVerilog, VHDL, Bash, Perl</div>
-        <ul class="exp-bullets">
-          <li>Component owner for SpyGlass Analyzer team; validated static verification solutions (EDA tools) identifying critical RTL design issues.</li>
-          <li>Validated industry-leading clock domain crossing (VC CDC/RDC) and design constraint (VC Constraint) verification solutions.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div class="exp-org">Teaching</div>
-          <div class="exp-date">Jan 2022 &ndash; Dec 2023</div>
-        </div>
-        <div class="exp-role">Graduate Teaching Assistant, University of Kentucky</div>
-        <ul class="exp-bullets">
-          <li>TA for EE490 Senior Capstone Design and EGR 240 Global Energy Issues.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ========== EDUCATION ========== -->
-    <section id="education">
-      <h2 class="section-title">Education</h2>
-
-      <div class="edu-item">
-        <div class="edu-year">2021 &ndash; 2026</div>
-        <div class="edu-details">
-          <strong>Ph.D. in Electrical and Computer Engineering</strong>
-          <p>University of Kentucky, USA &nbsp;&bull;&nbsp; GPA: 3.8/4.0</p>
-          <p style="margin-top:4px;font-size:12.5px;color:var(--text-muted);">
-            Courses: Image Processing, Algorithm Design, Bayesian ML, Deep Learning, Stochastic Systems,
-            Advanced Computational Methods for Biomedical Imaging
-          </p>
-        </div>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-year">2013 &ndash; 2017</div>
-        <div class="edu-details">
-          <strong>B.Sc. in Electrical and Electronic Engineering</strong>
-          <p>University of Peradeniya, Sri Lanka &nbsp;&bull;&nbsp; Washington Accord accredited</p>
-        </div>
-      </div>
-
-      <div class="edu-item">
-        <div class="edu-year">2012</div>
-        <div class="edu-details">
-          <strong>GCE Advanced Level</strong>
-          <p>Mahamaya Girls' College, Kandy, Sri Lanka &nbsp;&bull;&nbsp; Ranked in the top 1% among ~250,000 candidates</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== SKILLS ========== -->
-    <section id="skills">
-      <h2 class="section-title">Skills</h2>
-
-      <div class="skill-group">
-        <div class="skill-group-label">Programming</div>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">MATLAB</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">C/C++</span>
-        <span class="skill-tag">Bash</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">Verilog</span>
-        <span class="skill-tag">SystemVerilog</span>
-        <span class="skill-tag">VHDL</span>
-        <span class="skill-tag">HTML</span>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-label">ML / Deep Learning</div>
-        <span class="skill-tag">PyTorch</span>
-        <span class="skill-tag">TensorFlow</span>
-        <span class="skill-tag">Hugging Face</span>
-        <span class="skill-tag">CLIP</span>
-        <span class="skill-tag">Diffusion Models</span>
-        <span class="skill-tag">LoRA / PEFT</span>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-group-label">Tools &amp; Infrastructure</div>
-        <span class="skill-tag">AWS (EC2, Bedrock, SageMaker)</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">Linux</span>
-        <span class="skill-tag">Multi-GPU Training</span>
-        <span class="skill-tag">LaTeX</span>
-        <span class="skill-tag">VS Code</span>
-      </div>
-    </section>
-
-    <!-- ========== ACTIVITIES ========== -->
-    <section id="activities">
-      <h2 class="section-title">Activities &amp; Leadership</h2>
-
-      <div class="extra-item">
-        <span>Assistant Director, Graduate Society of Women Engineers (GradSWE), University of Kentucky</span>
-        <span class="extra-year">2023 &ndash; 2024</span>
-      </div>
-      <div class="extra-item">
-        <span>Vice-President Membership, Synopsys Lanka Toastmaster Club</span>
-        <span class="extra-year">2020</span>
-      </div>
-      <div class="extra-item">
-        <span>Secretary, Synopsys Sport Club</span>
-        <span class="extra-year">2019</span>
-      </div>
-      <div class="extra-item">
-        <span>Senior Member, Basketball &amp; Hockey Teams, University of Peradeniya (<a href="https://drive.google.com/file/d/1b-tPGAupGxIG1lqCF-ordt47N0-lNIIB/view?usp=sharing" target="_blank" style="color:var(--accent)">University Colours</a>)</span>
-        <span class="extra-year">2014 &ndash; 2017</span>
-      </div>
-      <div class="extra-item">
-        <span>Member, Sri Lanka National University Women's Basketball Team</span>
-        <span class="extra-year">2017</span>
-      </div>
-      <div class="extra-item">
-        <span>Volunteer, 12th IEEE International Conference on Industrial and Information Systems (ICIIS)</span>
-        <span class="extra-year">2017</span>
-      </div>
-      <div class="extra-item">
-        <span>National-Level Volunteer Math &amp; Science Teacher, 'Arunella' Social Project</span>
-        <span class="extra-year">2014</span>
-      </div>
-      <div class="extra-item">
-        <span>Associate Member, Institution of Engineers Sri Lanka</span>
-        <span class="extra-year">2016 &ndash; Present</span>
       </div>
     </section>
 
     <!-- ========== CONTACT ========== -->
     <section id="contact">
       <h2 class="section-title">Contact</h2>
-      <p style="font-size:15px;margin-bottom:16px;">Feel free to reach out for research collaborations, opportunities, or just to say hi.</p>
+      <p style="font-size:15px;margin-bottom:16px;">Feel free to reach out for research collaborations, industry opportunities, or just to connect.</p>
       <div class="contact-grid">
         <div class="contact-card">
           <i class="bi bi-envelope"></i>
@@ -759,7 +660,7 @@
     };
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth scroll + active nav
+    // Smooth scroll
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -768,7 +669,6 @@
     // Highlight active nav on scroll
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.sidebar a.nav-link[href^="#"]');
-    const mainEl = document.querySelector('.main');
 
     function onScroll() {
       let scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -784,7 +684,30 @@
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
+
+    // Thumbnail fallback: show placeholder if image fails to load
+    document.querySelectorAll('.research-thumb').forEach(img => {
+      img.addEventListener('error', function() {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'research-thumb-placeholder';
+        placeholder.innerHTML = '<i class="bi bi-image"></i>';
+        this.parentNode.replaceChild(placeholder, this);
+      });
+    });
+
+    // Hero text color changes with each carousel slide
+    const heroTextColors = ['#000000', '#0d1b6f', '#e6b800', '#1b5e20', '#000000', '#ffffff', '#c62828'];
+    const heroText = document.querySelector('.hero-text');
+    const heroCarousel = document.getElementById('heroCarousel');
+
+    if (heroCarousel && heroText) {
+      heroCarousel.addEventListener('slid.bs.carousel', function(e) {
+        const idx = e.to;
+        const color = heroTextColors[idx] || '#000000';
+        heroText.querySelector('h1').style.color = color;
+        heroText.querySelectorAll('p').forEach(p => p.style.color = color);
+      });
+    }
   </script>
 </body>
 </html>
-
