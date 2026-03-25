@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
@@ -193,22 +193,23 @@
 
     /* ===== RESEARCH WITH THUMBNAILS ===== */
     .research-item {
-      display:grid;grid-template-columns:140px 1fr;gap:18px;
+      display:flex;flex-direction:column;
       background:var(--card-bg);border:1px solid var(--border);
-      border-radius:12px;padding:18px;margin-bottom:14px;transition:.3s;
-      align-items:start;
+      border-radius:12px;overflow:hidden;margin-bottom:16px;transition:.3s;
     }
     .research-item:hover {background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.15);}
     .research-thumb {
-      width:140px;height:95px;border-radius:8px;object-fit:cover;
-      border:1px solid var(--border);background:var(--card-hover);
+      width:100%;height:220px;object-fit:contain;
+      border-bottom:1px solid var(--border);background:var(--card-hover);
+      display:block;padding:8px;
     }
     .research-thumb-placeholder {
-      width:140px;height:95px;border-radius:8px;
-      border:1px solid var(--border);background:var(--card-hover);
+      width:100%;height:220px;
+      border-bottom:1px solid var(--border);background:var(--card-hover);
       display:flex;align-items:center;justify-content:center;
-      font-size:28px;color:var(--text-muted);opacity:.5;
+      font-size:36px;color:var(--text-muted);opacity:.5;
     }
+    .research-info {padding:16px 20px 18px;}
     .research-info .pub-title {font-weight:600;font-size:14.5px;line-height:1.5;margin-bottom:4px;}
     .research-info .pub-authors {font-size:13px;color:var(--text-muted);margin-bottom:3px;}
     .research-info .pub-authors strong {color:var(--accent);font-weight:600;}
@@ -275,8 +276,7 @@
       .sidebar {display:none;}
       .main {margin-left:0;}
       .contact-grid {grid-template-columns:1fr;}
-      .research-item {grid-template-columns:1fr;}
-      .research-thumb, .research-thumb-placeholder {width:100%;height:140px;}
+      .research-thumb, .research-thumb-placeholder {height:180px;}
     }
   </style>
 </head>
