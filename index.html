@@ -114,6 +114,7 @@
       transition:color 0.6s ease;
     }
     .hero-text p {font-size:14px;color:#222;opacity:.96;font-weight:500;line-height:1.4;transition:color 0.6s ease;}
+    .hero-text .hero-line3 {transition:color 0.6s ease, opacity 0.4s ease;}
 
     /* ===== MAIN ===== */
     .main {margin-left:230px;margin-right:30%;position:relative;z-index:5;}
@@ -322,8 +323,8 @@
     </div>
     <div class="hero-text">
       <h1>Lakmali Nadeesha</h1>
-      <p>PhD Researcher &middot; Computer Vision &middot; Medical Imaging</p>
-      <p>Active Learning &middot; Foundation Models &middot; Generative AI</p>
+      <p class="hero-line2">PhD Researcher &middot; Computer Vision</p>
+      <p class="hero-line3">Data/Cost Efficient Learning &middot; Foundation Models &middot; Generative AI</p>
     </div>
   </header>
 
@@ -332,7 +333,7 @@
 
     <!-- JOB MARKET BANNER -->
     <div class="job-banner">
-      <i class="bi bi-briefcase-fill"></i>I am on the Job Market! Feel free to reach out regarding potential opportunities.<a href="mailto:lakmali.nadeesha@uky.edu">Get in touch &rarr;</a>
+      <i class="bi bi-briefcase-fill"></i>I am actively seeking new opportunities. I welcome connections and discussions.<a href="mailto:lakmali.nadeesha@uky.edu">Get in touch &rarr;</a>
     </div>
 
     <!-- ========== ABOUT ========== -->
@@ -498,13 +499,15 @@
     <section id="research">
       <h2 class="section-title">Research &amp; Publications</h2>
       <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">
+        Add a thumbnail image for each paper in <code>/assets/research/</code> to visualize your work.
+        If an image is missing, a placeholder icon will appear automatically.
       </p>
 
       <div class="pub-section-label">Peer-Reviewed Publications</div>
 
       <!-- Pub 1: MICCAI 2026 -->
       <div class="research-item">
-        <img src="/assets/research/miccai2026.png" alt="MICCAI 2026" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1rKD-gJrd2lZEMoUhddZZjK4dH8KES4QK" alt="MICCAI 2026" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">Learning Class Difficulty in Imbalanced Histopathology Segmentation via Dynamic Focal Attention</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
@@ -514,7 +517,7 @@
 
       <!-- Pub 2: ICIP 2025 -->
       <div class="research-item">
-        <img src="/assets/research/icip2025.png" alt="ICIP 2025" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1GHaMHM0mQa3OcojkF0car2hkIyLd4jFq" alt="ICIP 2025" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, G.A.C.T. Bandara, Sen-ching Cheung</div>
@@ -528,7 +531,7 @@
 
       <!-- Pub 3: Elsevier 2024 -->
       <div class="research-item">
-        <img src="/assets/research/jms2024.png" alt="JMS 2024" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1ld4R_cgueGZt6nkLpz2l6_OFBe2SBILS" alt="JMS 2024" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">Efficient Stochastic Parametric Estimation for Lithium-Ion Battery Performance Degradation Tracking and Prognosis</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, P. Wang</div>
@@ -541,7 +544,7 @@
 
       <!-- Pub 4: Sensors 2021 -->
       <div class="research-item">
-        <img src="/assets/research/sensors2021.png" alt="Sensors 2021" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1CCNP2WDwe5pvajgRm08EQEVQ47XM1zBC" alt="Sensors 2021" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">Sylvester Matrix Based Similarity Estimation Method for Automation of Defect Detection in Textile Fabrics</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, G.A.C.T. Bandara, Maheshi B. Dissanayake</div>
@@ -554,7 +557,7 @@
 
       <!-- Pub 5: Mechatronics 2020 -->
       <div class="research-item">
-        <img src="/assets/research/mechatronics2020.png" alt="Mechatronics 2020" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1tcWG9qRs4wCmqWuTlt7pFOVKkJYfC6qg" alt="Mechatronics 2020" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">Vehicle-Fixed-Frame Adaptive Controller and Intrinsic Nonlinear PID Controller for Attitude Stabilization of a Complex-Shaped Underwater Vehicle</div>
           <div class="pub-authors">G.A.C.T. Bandara, <strong>R.M.L.N. Kumari</strong>, D.H.S. Maithripala, D.A.A.C. Ratnaweera</div>
@@ -568,7 +571,7 @@
       <div class="pub-section-label">Selected Research Presentations</div>
 
       <div class="research-item">
-        <img src="/assets/research/semisam2024.png" alt="SemiSAM 2024" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1e2VvmRrTCMQcpfK4vmlnKccgv1MNPn5G" alt="SemiSAM 2024" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">SemiSAM_Med: Class-Imbalanced Active Learning in Medical Image Segmentation via Semi-supervised SAM Model</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
@@ -580,7 +583,7 @@
       </div>
 
       <div class="research-item">
-        <img src="/assets/research/asd2023.png" alt="ASD 2023" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1PZIUdzDEF_byuqqsHqSB3du0Jd9XgjN_" alt="ASD 2023" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">Eyes Speak Louder: Computer Vision and Machine Learning Insights into Autism Spectrum Behaviors</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
@@ -592,7 +595,7 @@
       </div>
 
       <div class="research-item">
-        <img src="/assets/research/cinn2023.png" alt="CINN 2023" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1ebbTiHyf0o9kv951T8EerS8vnw6h-gck" alt="CINN 2023" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">Modeling and Prediction of Lithium-Ion Battery Degradation with CINN for Parameter Estimation</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, P. Wang</div>
@@ -604,7 +607,7 @@
       </div>
 
       <div class="research-item">
-        <img src="/assets/research/salsmis2023.png" alt="SAL-SMIS 2023" class="research-thumb">
+        <img src="https://drive.google.com/uc?export=view&id=1cEkzzXt1zG5A89AsMYdapVtekqaO-x_S" alt="SAL-SMIS 2023" class="research-thumb">
         <div class="research-info">
           <div class="pub-title">SAL-SMIS: Self-Supervised Active Learning for Semi-Supervised Medical Image Segmentation</div>
           <div class="pub-authors"><strong>R.M.L.N. Kumari</strong>, Sen-ching Cheung</div>
@@ -693,10 +696,11 @@
       });
     });
 
-    // Hero text color changes with each carousel slide
+    // Hero text color changes with each carousel slide + hide 3rd line on slides 2-7
     const heroTextColors = ['#000000', '#0d1b6f', '#e6b800', '#1b5e20', '#000000', '#ffffff', '#c62828'];
     const heroText = document.querySelector('.hero-text');
     const heroCarousel = document.getElementById('heroCarousel');
+    const heroLine3 = document.querySelector('.hero-line3');
 
     if (heroCarousel && heroText) {
       heroCarousel.addEventListener('slid.bs.carousel', function(e) {
@@ -704,6 +708,10 @@
         const color = heroTextColors[idx] || '#000000';
         heroText.querySelector('h1').style.color = color;
         heroText.querySelectorAll('p').forEach(p => p.style.color = color);
+        // Show 3rd line only on first slide
+        if (heroLine3) {
+          heroLine3.style.display = (idx === 0) ? 'block' : 'none';
+        }
       });
     }
   </script>
