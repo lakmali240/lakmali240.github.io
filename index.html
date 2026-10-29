@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lakmali Nadeesha Kumari</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Lakmali Nadeesha Kumari: Postdoctoral Researcher at UC Davis working on data-efficient machine learning, computer vision, and digital pathology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned single column (max 1080px); hero splits text | generated H&E slide with a toggleable segmentation mask.
+   Palette drawn from H&E staining: hematoxylin indigo (accent) and eosin rose (secondary) on slide-glass white. */
+:root {
+  --bg: #F6F5F9;
+  --surface: #FFFFFF;
+  --ink: #1C1830;
+  --muted: #5B5570;
+  --line: #E3DFEC;
+  --hema: #3F3088;
+  --hema-soft: #ECE8F7;
+  --eosin: #B8395F;
+  --eosin-soft: #F8E6EC;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121019; --surface: #1A1724; --ink: #ECE9F5; --muted: #A59EBA; --line: #2E2942;
+    --hema: #AC9EF2; --hema-soft: #252040; --eosin: #EF86A6; --eosin-soft: #3A1F2B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121019; --surface: #1A1724; --ink: #ECE9F5; --muted: #A59EBA; --line: #2E2942;
+  --hema: #AC9EF2; --hema-soft: #252040; --eosin: #EF86A6; --eosin-soft: #3A1F2B;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--hema); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--eosin); }
+:focus-visible { outline: 2px solid var(--eosin); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; text-wrap: balance; margin: 0; }
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
+}
+
+/* ---------- Top bar ---------- */
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .wrap { display: flex; align-items: center; gap: 24px; min-height: 56px; }
+.brand { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.brand:hover { color: var(--ink); }
+.nav { display: flex; gap: 4px; overflow-x: auto; margin-left: auto; scrollbar-width: none; min-width: 0; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  font-size: 0.875rem; color: var(--muted); text-decoration: none;
+  padding: 6px 10px; border-radius: 6px; white-space: nowrap;
+}
+.nav a:hover { color: var(--ink); background: var(--hema-soft); }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: 56px 40px; }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 880px) { .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 56px; } }
+.hero-text { min-width: 0; }
+.kicker {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--eosin); margin: 0 0 14px;
+}
+.hero h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1.05; letter-spacing: -0.01em; }
+.lead { font-family: var(--font-display); font-size: clamp(1.2rem, 2.4vw, 1.45rem); line-height: 1.45; margin: 18px 0 0; max-width: 34ch; }
+.lead em { color: var(--hema); font-style: italic; }
+.hero-sub { color: var(--muted); margin: 16px 0 0; max-width: 60ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 0.9rem/1 var(--font-body); padding: 11px 16px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer;
+}
+.btn:hover { border-color: var(--hema); color: var(--hema); }
+.btn.primary { background: var(--hema); border-color: var(--hema); color: var(--bg); }
+.btn.primary:hover { background: var(--eosin); border-color: var(--eosin); color: var(--bg); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Slide viewer */
+.slide { min-width: 0; }
+.slide-frame {
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); background: #F4F1F6;
+  box-shadow: 0 18px 40px -24px rgba(40, 20, 80, 0.45);
+}
+.slide canvas { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; max-width: 100%; }
+.slide-hud {
+  position: absolute; left: 10px; top: 10px; display: flex; gap: 6px;
+  font-family: var(--font-mono); font-size: 0.72rem;
+}
+.slide-hud span { background: rgba(255,255,255,0.88); color: #2A2340; padding: 3px 7px; border-radius: 4px; }
+.slide-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 12px; }
+.toggle {
+  display: inline-flex; align-items: center; gap: 10px; cursor: pointer;
+  font: 500 0.875rem var(--font-body); color: var(--ink); background: none; border: 0; padding: 4px 0;
+}
+.toggle .track {
+  width: 36px; height: 20px; border-radius: 999px; background: var(--line); position: relative; transition: background .2s;
+}
+.toggle .track::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--surface); box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .2s;
+}
+.toggle[aria-pressed="true"] .track { background: var(--hema); }
+.toggle[aria-pressed="true"] .track::after { transform: translateX(16px); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); list-style: none; margin: 0; padding: 0; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.caption { font-size: 0.8rem; color: var(--muted); margin: 8px 0 0; }
+
+/* ---------- Sections ---------- */
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 28px; }
+.sec-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.2rem); }
+.sec-note { color: var(--muted); font-size: 0.9rem; margin: 0; }
+
+/* About */
+.about-grid { display: grid; gap: 32px; }
+@media (min-width: 880px) { .about-grid { grid-template-columns: 1.4fr 1fr; gap: 56px; } }
+.about-grid > * { min-width: 0; }
+.prose p { margin: 0 0 14px; max-width: 65ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+.chips li { font-size: 0.82rem; padding: 5px 10px; border-radius: 999px; background: var(--hema-soft); color: var(--hema); }
+.news h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 12px; }
+.news ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.news li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; font-size: 0.92rem; }
+.news li > * { min-width: 0; }
+.news time { font-family: var(--font-mono); font-size: 0.78rem; color: var(--eosin); padding-top: 2px; font-variant-numeric: tabular-nums; }
+
+/* Research cards */
+.cards { display: grid; gap: 16px; }
+@media (min-width: 640px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+.card {
+  display: flex; flex-direction: column; gap: 10px; min-width: 0;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px;
+}
+.card.now { background: var(--hema); border-color: var(--hema); color: var(--bg); }
+.card.now .tag { background: color-mix(in srgb, var(--bg) 18%, transparent); color: var(--bg); }
+.card.now p { color: color-mix(in srgb, var(--bg) 88%, transparent); }
+.card h3 { font-size: 1.3rem; line-height: 1.25; }
+.card p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+.tag {
+  align-self: flex-start; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em;
+  padding: 3px 8px; border-radius: 4px; background: var(--eosin-soft); color: var(--eosin);
+}
+.result {
+  margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line);
+  font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.card.now .result { border-top-color: color-mix(in srgb, var(--bg) 35%, transparent); color: var(--bg); }
+
+/* Publications */
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters button {
+  font: 500 0.82rem var(--font-body); padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+}
+.filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pub { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding-block: 18px; border-bottom: 1px solid var(--line); }
+.pub:first-child { padding-top: 0; }
+.pub > * { min-width: 0; }
+.pub .yr { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.pub h3 { font-size: 1.15rem; line-height: 1.35; text-wrap: pretty; }
+.pub .authors { font-size: 0.9rem; color: var(--muted); margin: 4px 0 0; }
+.pub .authors b { color: var(--ink); font-weight: 600; }
+.pub .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 8px; font-size: 0.88rem; }
+.venue { font-style: italic; }
+.kind { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
+.kind.conf { background: var(--hema-soft); color: var(--hema); }
+.kind.jour { background: var(--eosin-soft); color: var(--eosin); }
+.kind.prep, .kind.abs { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.links { display: inline-flex; gap: 10px; }
+.links a { font-family: var(--font-mono); font-size: 0.8rem; }
+.posters { margin-top: 32px; }
+.posters h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 10px; }
+.posters ul { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; font-size: 0.92rem; color: var(--muted); }
+.posters li::marker { color: var(--eosin); }
+
+/* Experience */
+.exp-grid { display: grid; gap: 40px; }
+@media (min-width: 880px) { .exp-grid { grid-template-columns: 1.5fr 1fr; gap: 56px; } }
+.exp-grid > * { min-width: 0; }
+.col-title { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin: 0 0 14px; }
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+.timeline li { position: relative; padding-left: 28px; padding-bottom: 22px; }
+.timeline li::before {
+  content: ""; position: absolute; left: 0; top: 7px; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--hema);
+}
+.timeline li.industry::before { border-color: var(--eosin); }
+.timeline .when { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; margin-top: 2px; }
+.timeline .org { color: var(--muted); font-size: 0.92rem; }
+.timeline p { margin: 6px 0 0; font-size: 0.92rem; max-width: 62ch; }
+.edu { display: grid; gap: 18px; }
+.edu div h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; }
+.edu div p { margin: 2px 0 0; font-size: 0.92rem; color: var(--muted); }
+.edu .diss { font-family: var(--font-display); font-style: italic; color: var(--ink); font-size: 1rem; }
+.key { display: flex; gap: 16px; font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.key span { display: inline-flex; align-items: center; gap: 6px; }
+.key i { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--hema); display: inline-block; }
+.key i.ind { border-color: var(--eosin); }
+
+/* Contact */
+.contact-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.email {
+  display: inline-flex; align-items: center; gap: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); max-width: 100%;
+}
+.email code { font-family: var(--font-mono); font-size: 0.95rem; padding: 10px 14px; user-select: all; overflow-wrap: anywhere; }
+.email button { font: 500 0.85rem var(--font-body); border: 0; border-left: 1px solid var(--line); background: var(--hema-soft); color: var(--hema); padding: 10px 14px; cursor: pointer; align-self: stretch; }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 0.85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+@media (max-width: 520px) {
+  .pub { grid-template-columns: 1fr; gap: 4px; }
+  .news li { grid-template-columns: 64px 1fr; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">L. N. Kumari</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="kicker">Postdoctoral Researcher &middot; UC Davis</p>
+        <h1>Lakmali Nadeesha Kumari</h1>
+        <p class="lead">I build machine learning that learns a lot from <em>a little labeled data</em>, for gigapixel pathology images, medical imaging, and generative models.</p>
+        <p class="hero-sub">Postdoc with Prof. Chen-Nee Chuah and Prof. Brittany N. Dugger at the University of California, Davis. Ph.D. in Electrical and Computer Engineering from the University of Kentucky (2026). Twice an Applied Scientist Intern at Amazon.</p>
+        <div class="actions">
+          <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+            Curriculum Vitae
+          </a>
+          <a class="btn" href="https://github.com/lakmali240" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/lnadeeshak/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <!-- Add Google Scholar here when ready:
+          <a class="btn" href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank" rel="noopener">Google Scholar</a> -->
+        </div>
+      </div>
+
+      <figure class="slide" style="margin:0">
+        <div class="slide-frame">
+          <canvas id="slide" width="800" height="600" role="img" aria-label="Illustration of an H&amp;E-stained brain tissue section with leptomeninges, superficial cortex, gray matter and white matter"></canvas>
+          <div class="slide-hud" aria-hidden="true"><span>H&amp;E</span><span>5&times;</span></div>
+        </div>
+        <div class="slide-controls">
+          <button class="toggle" id="maskToggle" type="button" aria-pressed="false">
+            <span class="track" aria-hidden="true"></span> Show segmentation
+          </button>
+          <ul class="legend" aria-label="Tissue classes">
+            <li><i style="background:#E9A23B"></i>Leptomeninges</li>
+            <li><i style="background:#2FB3A1"></i>Superficial cortex</li>
+            <li><i style="background:#5D7FF0"></i>Gray matter</li>
+            <li><i style="background:#8DCB5F"></i>White matter</li>
+          </ul>
+        </div>
+        <figcaption class="caption">An illustrative brain tissue section, drawn in your browser. Turn on the mask to see the four tissue classes my models learn to segment in whole-slide images.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>About</h2></div>
+      <div class="about-grid">
+        <div class="prose">
+          <p>My research asks where a model's structure should come from when labels, compute, or time are scarce. Sometimes the answer is an expert model, sometimes it is feedback from the task itself, and sometimes the structure has to be discovered from the data.</p>
+          <p>I apply these ideas to gigapixel whole-slide images, skin lesion images, battery degradation, and Alzheimer's disease neuropathology. At UC Davis, I work on foundation models and agentic vision&ndash;language systems for digital neuropathology.</p>
+          <p>Before my Ph.D., I spent three years as an Applications Engineer at Synopsys. During my Ph.D., I interned twice as an Applied Scientist at Amazon, building generative AI and multimodal machine learning pipelines.</p>
+          <ul class="chips" aria-label="Research interests">
+            <li>Computer vision</li>
+            <li>Medical image segmentation</li>
+            <li>Foundation models</li>
+            <li>Diffusion models</li>
+            <li>Vision&ndash;language models</li>
+            <li>Active &amp; self-supervised learning</li>
+            <li>Variational inference</li>
+          </ul>
+        </div>
+        <div class="news">
+          <h3>News</h3>
+          <ul>
+            <li><time datetime="2026-10">Oct 2026</time><span>Started as a Postdoctoral Researcher at UC Davis, in Electrical &amp; Computer Engineering and Pathology &amp; Laboratory Medicine.</span></li>
+            <li><time datetime="2026-09">Sep 2026</time><span>Defended my Ph.D. at the University of Kentucky.</span></li>
+            <li><time datetime="2026-09">Sep 2026</time><span>Dynamic Focal Attention published at <a href="https://papers.miccai.org/miccai-2026/paper/6050_paper.pdf" target="_blank" rel="noopener">MICCAI 2026</a>.</span></li>
+            <li><time datetime="2025-05">May 2025</time><span>Returned to Amazon as an Applied Scientist Intern, working on generative AI for product visualization.</span></li>
+            <li><time datetime="2025">2025</time><span>Active-learning paper published at <a href="https://doi.org/10.1109/ICIP55913.2025.11084666" target="_blank" rel="noopener">IEEE ICIP 2025</a>.</span></li>
+            <li><time datetime="2024-06">Jun 2024</time><span>Joined Amazon in Seattle as an Applied Scientist Intern.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Research</h2>
+        <p class="sec-note">Selected projects, with the result each one is known for.</p>
+      </div>
+      <div class="cards">
+        <article class="card now">
+          <span class="tag">Now &middot; UC Davis</span>
+          <h3>AI for digital neuropathology</h3>
+          <p>Foundation models and agentic vision&ndash;language systems that analyze gigapixel whole-slide brain images at scale, across institutions, scanners, and stains.</p>
+          <div class="result">Alzheimer's disease and related dementias</div>
+        </article>
+        <article class="card">
+          <span class="tag">MICCAI 2026</span>
+          <h3>Learning which classes are hard</h3>
+          <p>Dynamic Focal Attention learns a per-class attention bias during training, so the model focuses on classes that are actually difficult rather than just rare. Tested on brain whole-slide images, BCSS, and CRAG.</p>
+          <div class="result">Up to +15.2 Dice on difficult classes</div>
+        </article>
+        <article class="card">
+          <span class="tag">IEEE ICIP 2025</span>
+          <h3>Active learning without the cold start</h3>
+          <p>Task-aligned active learning rebuilds its selection space from the segmentation encoder every round, so the first labeled samples are already informative.</p>
+          <div class="result">98.7% of full accuracy with 38.4% of labels</div>
+        </article>
+        <article class="card">
+          <span class="tag">In preparation</span>
+          <h3>Alzheimer's disease trajectories</h3>
+          <p>CONTINUUM models disease progression as continuous, subtype-specific trajectories using amortized variational inference on autopsy data.</p>
+          <div class="result">5 subtypes, reproduced in 2 independent cohorts</div>
+        </article>
+        <article class="card">
+          <span class="tag">Targeting CVPR 2027</span>
+          <h3>Concept removal in diffusion models</h3>
+          <p>Temporally adaptive spectral control for removing unwanted concepts from diffusion models, acting only at the denoising steps that matter.</p>
+          <div class="result">Generative AI safety</div>
+        </article>
+        <article class="card">
+          <span class="tag">J. Manufacturing Systems 2024</span>
+          <h3>Fast inference for expert models</h3>
+          <p>A conditional invertible neural network, trained on simulated data, replaces MCMC for estimating battery degradation parameters.</p>
+          <div class="result">690 s &rarr; 0.2 s per trajectory</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section id="publications">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Publications</h2>
+        <div class="filters" role="group" aria-label="Filter publications">
+          <button type="button" id="f-all" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" id="f-conf" data-filter="conf" aria-pressed="false">Conference</button>
+          <button type="button" id="f-jour" data-filter="jour" aria-pressed="false">Journal</button>
+          <button type="button" id="f-prep" data-filter="prep" aria-pressed="false">In preparation</button>
+        </div>
+      </div>
+      <ol class="pubs" id="pubs">
+        <li class="pub" data-kind="prep">
+          <span class="yr">2026</span>
+          <div>
+            <h3>Not All Steps Matter: Temporally Adaptive Spectral Control for Concept Removal in Diffusion Models</h3>
+            <p class="authors"><b>R.M.L.N. Kumari</b>, C.T. Bandara, S.-C.S. Cheung</p>
+            <div class="meta"><span class="kind prep">In preparation</span><span class="venue">IEEE/CVF CVPR 2027</span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="prep">
+          <span class="yr">2026</span>
+          <div>
+            <h3>CONTINUUM: A Variational Deep-Generative Reformulation of Subtype and Stage Inference Reveals Reproducible, Genetically Distinct Neuropathological Trajectories of Alzheimer's Disease Across Independent Autopsy Cohorts</h3>
+            <p class="authors"><b>R.M.L.N. Kumari</b>, J. Zhu, R.K. Shahidehpour, P.T. Nelson, S.-C.S. Cheung</p>
+            <div class="meta"><span class="kind prep">In preparation</span><span class="venue">Neurobiology of Disease</span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="conf">
+          <span class="yr">2026</span>
+          <div>
+            <h3>Learning Class Difficulty via Dynamic Focal Attention for Histopathology Segmentation</h3>
+            <p class="authors"><b>R.M.L.N. Kumari</b>, S.-C.S. Cheung</p>
+            <div class="meta"><span class="kind conf">Conference</span><span class="venue">MICCAI 2026, LNCS vol. 16891</span>
+              <span class="links"><a href="https://papers.miccai.org/miccai-2026/paper/6050_paper.pdf" target="_blank" rel="noopener">PDF</a><a href="https://arxiv.org/abs/2604.13479" target="_blank" rel="noopener">arXiv</a></span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="conf">
+          <span class="yr">2025</span>
+          <div>
+            <h3>A Warmer Start to Active Learning with Adaptive Gaussian Mixture Models for Skin Lesion Segmentation</h3>
+            <p class="authors"><b>R.M.L.N. Kumari</b>, C.T. Bandara, C.-N. Chuah, S.-C.S. Cheung</p>
+            <div class="meta"><span class="kind conf">Conference</span><span class="venue">IEEE ICIP 2025, pp. 2247&ndash;2252</span>
+              <span class="links"><a href="https://doi.org/10.1109/ICIP55913.2025.11084666" target="_blank" rel="noopener">DOI</a></span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="abs">
+          <span class="yr">2025</span>
+          <div>
+            <h3>Multicompartment Neuroanatomic Segmentation of Autopsy Brain Tissue Sections Using Deep Learning Methodologies</h3>
+            <p class="authors">T. Pearce, <b>L. Nadeesha</b>, A. Neltner, et al.</p>
+            <div class="meta"><span class="kind abs">Abstract</span><span class="venue">Journal of Neuropathology &amp; Experimental Neurology 84(6):494</span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="jour">
+          <span class="yr">2024</span>
+          <div>
+            <h3>Efficient Stochastic Parametric Estimation for Lithium-Ion Battery Performance Degradation Tracking and Prognosis</h3>
+            <p class="authors"><b>R.M.L.N. Kumari</b>, P. Wang</p>
+            <div class="meta"><span class="kind jour">Journal</span><span class="venue">Journal of Manufacturing Systems, vol. 75, pp. 270&ndash;277</span>
+              <span class="links"><a href="https://doi.org/10.1016/j.jmsy.2024.03.017" target="_blank" rel="noopener">DOI</a></span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="jour">
+          <span class="yr">2021</span>
+          <div>
+            <h3>Sylvester Matrix Based Similarity Estimation Method for Automation of Defect Detection in Textile Fabrics</h3>
+            <p class="authors"><b>R.M.L.N. Kumari</b>, C.T. Bandara, M.B. Dissanayake</p>
+            <div class="meta"><span class="kind jour">Journal</span><span class="venue">Journal of Sensors</span>
+              <span class="links"><a href="https://doi.org/10.1155/2021/6625421" target="_blank" rel="noopener">DOI</a></span></div>
+          </div>
+        </li>
+        <li class="pub" data-kind="jour">
+          <span class="yr">2020</span>
+          <div>
+            <h3>Vehicle-Fixed-Frame Adaptive Controller and Intrinsic Nonlinear PID Controller for Attitude Stabilization of a Complex-Shaped Underwater Vehicle</h3>
+            <p class="authors">C.T. Bandara, <b>R.M.L.N. Kumari</b>, D.H.S. Maithripala, D.A.A.C. Ratnaweera</p>
+            <div class="meta"><span class="kind jour">Journal</span><span class="venue">Journal of Mechatronics and Robotics, vol. 4</span>
+              <span class="links"><a href="https://doi.org/10.3844/jmrsp.2020.254.264" target="_blank" rel="noopener">DOI</a></span></div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="posters">
+        <h3>Posters</h3>
+        <ul>
+          <li>SemiSAM_Med: Class-Imbalanced Active Learning in Medical Image Segmentation via a Semi-Supervised SAM Model. ECE Research Symposium, University of Kentucky, 2024. <a href="https://drive.google.com/file/d/1AYIqsJOXZnvXSdug8P29pqdEn_m95zhH/view?usp=sharing" target="_blank" rel="noopener">Poster</a></li>
+          <li>Eyes Speak Louder: Computer Vision and Machine Learning Insights into Autism Spectrum Behaviors. Commonwealth Computational Summit, 2023. <a href="https://drive.google.com/file/d/1vSHLyPcWEG39gSbqrPy3G9LnLAsm7KfP/view?usp=sharing" target="_blank" rel="noopener">Poster</a></li>
+          <li>SAL-SMIS: Self-Supervised Active Learning for Semi-Supervised Medical Image Segmentation. ECE Research Symposium, University of Kentucky, 2023. <a href="https://drive.google.com/file/d/1xthbtyfiKTPZkMPNKY4-nbohQHtwXeOi/view?usp=sharing" target="_blank" rel="noopener">Poster</a></li>
+          <li>Modeling and Prediction of Lithium-Ion Battery Degradation with CINN for Parameter Estimation. Engineering Dean's Advisory Council, University of Kentucky, 2023. <a href="https://drive.google.com/file/d/1EWVs2_3B_YV5oAnTY8gWJubCy5nGuv_V/view?usp=sharing" target="_blank" rel="noopener">Poster</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <div class="key" aria-hidden="true"><span><i></i>Research</span><span><i class="ind"></i>Industry</span></div>
+      </div>
+      <div class="exp-grid">
+        <div>
+          <p class="col-title">Positions</p>
+          <ol class="timeline">
+            <li>
+              <span class="when">Oct 2026 &ndash; present</span>
+              <h3>Postdoctoral Researcher</h3>
+              <span class="org">University of California, Davis</span>
+              <p>AI for digital neuropathology with Prof. Chen-Nee Chuah (Electrical &amp; Computer Engineering) and Prof. Brittany N. Dugger (Pathology &amp; Laboratory Medicine).</p>
+            </li>
+            <li class="industry">
+              <span class="when">May &ndash; Aug 2025</span>
+              <h3>Applied Scientist Intern</h3>
+              <span class="org">Amazon, Merch on Demand &middot; Seattle</span>
+              <p>Built an end-to-end generative AI pipeline for product visualization with diffusion models (FLUX.1, CatVTON-Flux), LoRA refinement, and LLM-as-a-judge quality evaluation on multi-GPU AWS SageMaker.</p>
+            </li>
+            <li class="industry">
+              <span class="when">Jun &ndash; Aug 2024</span>
+              <h3>Applied Scientist Intern</h3>
+              <span class="org">Amazon, Merch on Demand &middot; Seattle</span>
+              <p>Built a multi-modal, multi-label product classifier on CLIP embeddings with an automated active-learning loop and LLM-based pseudo-labeling.</p>
+            </li>
+            <li>
+              <span class="when">Aug 2021 &ndash; Sep 2026</span>
+              <h3>Graduate Research Assistant</h3>
+              <span class="org">University of Kentucky</span>
+              <p>Multimedia Information Analysis Lab (Prof. Sen-ching Samson Cheung) and Augmented Intelligence for Smart Manufacturing Lab (Prof. Peng Wang). Graduate Teaching Assistant, 2022&ndash;2023.</p>
+            </li>
+            <li class="industry">
+              <span class="when">Apr 2018 &ndash; Aug 2021</span>
+              <h3>Applications Engineer II</h3>
+              <span class="org">Synopsys &middot; Sri Lanka</span>
+              <p>Component owner for SpyGlass Analyzer. Validated static, CDC/RDC, and design-constraint verification tools for semiconductor design.</p>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <p class="col-title">Education</p>
+          <div class="edu">
+            <div>
+              <h3>Ph.D., Electrical and Computer Engineering</h3>
+              <p>University of Kentucky &middot; 2026</p>
+              <p class="diss">Resource-Efficient Machine Learning Through the Balance of Prior Knowledge and Learned Structure</p>
+              <p>Advisor: Prof. Sen-ching Samson Cheung</p>
+            </div>
+            <div>
+              <h3>B.Sc. Eng., Electrical and Electronic Engineering</h3>
+              <p>University of Peradeniya, Sri Lanka &middot; 2017</p>
+            </div>
+          </div>
+          <p class="col-title" style="margin-top:32px">Service</p>
+          <div class="edu">
+            <div>
+              <h3>Assistant Director, GradSWE</h3>
+              <p>Graduate Society of Women Engineers, University of Kentucky &middot; 2023&ndash;2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head"><h2>Get in touch</h2></div>
+      <p class="prose" style="margin:0 0 18px;max-width:60ch;color:var(--muted)">I'm happy to talk about research collaborations, talks, and positions in machine learning and computer vision.</p>
+      <div class="contact-row">
+        <span class="email"><code id="emailText">lrathukohe@ucdavis.edu</code><button type="button" id="copyEmail">Copy</button></span>
+        <a class="btn" href="https://www.linkedin.com/in/lnadeeshak/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/lakmali240" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Lakmali Nadeesha Kumari</span>
+    <span>Davis, California &middot; Updated October 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ---------- Generated H&E slide with segmentation mask ---------- */
+  var canvas = document.getElementById('slide');
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Seeded random so the slide looks the same on every visit
+  var seed = 20260915;
+  function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+
+  // Smooth value noise
+  var G = 64, grid = [];
+  for (var i = 0; i < (G + 1) * (G + 1); i++) grid.push(rnd());
+  function noise(x, y) {
+    var gx = x / W * (G - 1), gy = y / H * (G - 1);
+    var x0 = Math.floor(gx), y0 = Math.floor(gy), fx = gx - x0, fy = gy - y0;
+    fx = fx * fx * (3 - 2 * fx); fy = fy * fy * (3 - 2 * fy);
+    var a = grid[y0 * (G + 1) + x0], b = grid[y0 * (G + 1) + x0 + 1];
+    var c = grid[(y0 + 1) * (G + 1) + x0], d = grid[(y0 + 1) * (G + 1) + x0 + 1];
+    return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+  }
+
+  // Layer boundaries: glass | leptomeninges | superficial cortex | gray matter | white matter
+  function b0(x) { return H * 0.07 + Math.sin(x / W * 5.1 + 0.4) * 10 + Math.sin(x / W * 13) * 3; }
+  function b1(x) { return b0(x) + 26 + Math.sin(x / W * 9 + 1.2) * 6; }
+  function b2(x) { return b1(x) + 58 + Math.sin(x / W * 6.3 + 2) * 10; }
+  function b3(x) { return H * 0.66 + Math.sin(x / W * 4.2 + 0.9) * 34 + Math.sin(x / W * 11 + 3) * 8; }
+  function regionAt(x, y) {
+    if (y < b0(x)) return -1;
+    if (y < b1(x)) return 0;
+    if (y < b2(x)) return 1;
+    if (y < b3(x)) return 2;
+    return 3;
+  }
+
+  var base = [
+    [233, 168, 196], // leptomeninges
+    [238, 190, 211], // superficial cortex
+    [226, 160, 192], // gray matter
+    [242, 205, 220]  // white matter
+  ];
+  var glass = [245, 242, 247];
+
+  var tissue = document.createElement('canvas'); tissue.width = W; tissue.height = H;
+  var tctx = tissue.getContext('2d');
+  var img = tctx.createImageData(W, H), px = img.data;
+  var regionMap = new Int8Array(W * H);
+  for (var y = 0; y < H; y++) {
+    for (var x = 0; x < W; x++) {
+      var r = regionAt(x, y), k = (y * W + x) * 4;
+      regionMap[y * W + x] = r;
+      var c = r < 0 ? glass : base[r];
+      var n = r < 0 ? 0 : (noise(x, y) - 0.5) * 26 + (noise(x * 3.1 % W, y * 2.7 % H) - 0.5) * 14;
+      px[k] = c[0] + n; px[k + 1] = c[1] + n * 0.9; px[k + 2] = c[2] + n * 0.6; px[k + 3] = 255;
+    }
+  }
+  tctx.putImageData(img, 0, 0);
+
+  // White-matter fibers
+  tctx.lineWidth = 1;
+  for (var f = 0; f < 140; f++) {
+    var fx0 = rnd() * W, fy0 = b3(fx0) + 10 + rnd() * (H - b3(fx0));
+    tctx.strokeStyle = 'rgba(205,120,160,' + (0.12 + rnd() * 0.18) + ')';
+    tctx.beginPath(); tctx.moveTo(fx0, fy0);
+    var len = 40 + rnd() * 120, ang = (rnd() - 0.5) * 0.5;
+    tctx.quadraticCurveTo(fx0 + len / 2, fy0 + Math.sin(ang) * 30 + (rnd() - 0.5) * 12, fx0 + len, fy0 + Math.sin(ang) * len * 0.3);
+    tctx.stroke();
+  }
+
+  // Nuclei (hematoxylin)
+  function nucleus(x, y, rx, ry, rot, alpha, col) {
+    tctx.save(); tctx.translate(x, y); tctx.rotate(rot);
+    tctx.fillStyle = 'rgba(' + col + ',' + alpha + ')';
+    tctx.beginPath(); tctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2); tctx.fill();
+    tctx.restore();
+  }
+  var density = [0.0016, 0.0007, 0.0042, 0.0016];
+  for (var reg = 0; reg < 4; reg++) {
+    var count = Math.round(W * H * density[reg] * (reg === 0 ? 0.6 : 1));
+    var placed = 0, tries = 0;
+    while (placed < count && tries < count * 40) {
+      tries++;
+      var nx = rnd() * W, ny = rnd() * H;
+      if (regionMap[(ny | 0) * W + (nx | 0)] !== reg) continue;
+      placed++;
+      if (reg === 2 && rnd() < 0.16) {
+        // Neurons: larger, triangular bodies
+        tctx.save(); tctx.translate(nx, ny); tctx.rotate(rnd() * 6.28);
+        tctx.fillStyle = 'rgba(132,92,170,0.55)';
+        tctx.beginPath(); tctx.moveTo(0, -7); tctx.lineTo(6, 5); tctx.lineTo(-6, 5); tctx.closePath(); tctx.fill();
+        tctx.fillStyle = 'rgba(64,44,120,0.85)';
+        tctx.beginPath(); tctx.arc(0, 1, 2.4, 0, 6.28); tctx.fill();
+        tctx.restore();
+      } else if (reg === 3) {
+        nucleus(nx, ny, 2.2, 2.0, 0, 0.75 + rnd() * 0.2, '62,44,128'); // oligodendrocytes
+      } else if (reg === 0) {
+        nucleus(nx, ny, 3.6, 1.4, (rnd() - 0.5) * 0.4, 0.6 + rnd() * 0.25, '72,52,138'); // elongated meningeal cells
+      } else {
+        nucleus(nx, ny, 1.8 + rnd() * 1.6, 1.6 + rnd() * 1.4, rnd() * 3.14, 0.6 + rnd() * 0.35, '58,40,122');
+      }
+    }
+  }
+
+  // Segmentation mask
+  var maskColors = [[233, 162, 59], [47, 179, 161], [93, 127, 240], [141, 203, 95]];
+  var mask = document.createElement('canvas'); mask.width = W; mask.height = H;
+  var mctx = mask.getContext('2d');
+  var mimg = mctx.createImageData(W, H), mpx = mimg.data;
+  for (var yy = 0; yy < H; yy++) {
+    for (var xx = 0; xx < W; xx++) {
+      var rr = regionMap[yy * W + xx], kk = (yy * W + xx) * 4;
+      if (rr < 0) continue;
+      var edge = (yy > 0 && regionMap[(yy - 1) * W + xx] !== rr) || (yy < H - 2 && regionMap[(yy + 2) * W + xx] !== rr);
+      var mc = maskColors[rr];
+      mpx[kk] = mc[0]; mpx[kk + 1] = mc[1]; mpx[kk + 2] = mc[2]; mpx[kk + 3] = edge ? 255 : 92;
+    }
+  }
+  mctx.putImageData(mimg, 0, 0);
+
+  function scaleBar() {
+    var bx = W - 150, by = H - 34;
+    ctx.fillStyle = 'rgba(255,255,255,0.88)';
+    ctx.fillRect(bx - 12, by - 22, 138, 40);
+    ctx.fillStyle = '#2A2340';
+    ctx.fillRect(bx, by + 4, 100, 5);
+    ctx.font = '500 15px "IBM Plex Mono", monospace';
+    ctx.fillText('500 µm', bx, by - 3);
+  }
+
+  var showMask = false, reveal = 0, anim = null;
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.drawImage(tissue, 0, 0);
+    if (reveal > 0) {
+      var w = Math.max(1, Math.round(W * reveal));
+      ctx.drawImage(mask, 0, 0, w, H, 0, 0, w, H);
+      if (reveal < 1) {
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.fillRect(w - 1, 0, 2, H);
+      }
+    }
+    scaleBar();
+  }
+  function animateTo(target) {
+    if (anim) cancelAnimationFrame(anim);
+    if (reduceMotion) { reveal = target; draw(); return; }
+    var start = null, from = reveal, dur = 900 * Math.abs(target - from);
+    function step(t) {
+      if (start === null) start = t;
+      var p = dur ? Math.min(1, (t - start) / dur) : 1;
+      var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      reveal = from + (target - from) * e;
+      draw();
+      if (p < 1) anim = requestAnimationFrame(step);
+    }
+    anim = requestAnimationFrame(step);
+  }
+  draw();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+
+  var toggle = document.getElementById('maskToggle');
+  toggle.addEventListener('click', function () {
+    showMask = !showMask;
+    toggle.setAttribute('aria-pressed', String(showMask));
+    animateTo(showMask ? 1 : 0);
+  });
+
+  /* ---------- Publication filters ---------- */
+  var buttons = document.querySelectorAll('.filters button');
+  var pubs = document.querySelectorAll('#pubs .pub');
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      pubs.forEach(function (p) {
+        var k = p.getAttribute('data-kind');
+        var match = f === 'all' || k === f || (f === 'prep' && k === 'prep');
+        p.hidden = !match;
+      });
+    });
+  });
+
+  /* ---------- Copy email ---------- */
+  var copyBtn = document.getElementById('copyEmail');
+  var emailText = document.getElementById('emailText');
+  copyBtn.addEventListener('click', function () {
+    var value = emailText.textContent.trim();
+    function selectText() {
+      var range = document.createRange(); range.selectNodeContents(emailText);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      copyBtn.textContent = 'Selected';
+    }
+    try {
+      navigator.clipboard.writeText(value).then(function () {
+        copyBtn.textContent = 'Copied';
+        setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1800);
+      }, selectText);
+    } catch (e) { selectText(); }
+  });
+})();
+</script>
+
+</body>
+</html>
